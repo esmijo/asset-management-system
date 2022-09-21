@@ -1,0 +1,66 @@
+form.login-form {
+  margin-top: 30%;
+  padding: 20px;
+  border: #8b8b8b 1px solid;
+  border-radius: 10px;
+}
+form.login-form .form-group {
+  margin-bottom: 10px;
+}
+
+.registration-container {
+  margin-top: 10%;
+  padding: 20px;
+  border: #8b8b8b 1px solid;
+  border-radius: 10px;
+}
+.registration-container form.registration-form {
+  margin-top: 20px;
+}
+.registration-container form.registration-form .form-group {
+  margin-bottom: 10px;
+}
+.registration-container form.registration-form label span#user_available {
+  color: red;
+}
+.registration-container span.req {
+  color: red;
+  font-weight: bold;
+}
+.registration-container form#form-clinic button {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.admin-container #admin-side-nav {
+  background-color: #e4e4e4 !important;
+  height: 100vh !important;
+  padding: 0 5px 0 5px;
+}
+.admin-container .nav-link {
+  font-weight: bold;
+  margin: 5px;
+}
+.admin-container .nav-link:hover {
+  background-color: #001347;
+  color: #fff !important;
+}
+.admin-container .dropdown-nav {
+  cursor: pointer;
+}
+.admin-container #clinics-collapse li,
+.admin-container #clients-collapse li {
+  padding: 5px;
+}
+.admin-container #clinics-collapse li a,
+.admin-container #clients-collapse li a {
+  margin-left: 30px;
+  cursor: pointer;
+  padding: 5px 10px 5px 10px;
+}
+.admin-container #clinics-collapse li a:hover,
+.admin-container #clients-collapse li a:hover {
+  background-color: #00258a;
+  color: #fff !important;
+  font-weight: bold;
+}
