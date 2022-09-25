@@ -20,8 +20,9 @@ return new class extends Migration
             $table->string('lastName');
             $table->string('sex');
             $table->string('birthDay');
-            $table->string('username')->unique();
-            $table->string('password');
+            $table->string('userName')->unique();
+            $table->string('passWord');
+            $table->string('userType')->nullable();
             $table->string('emailAddress')->unique();
             $table->string('contactNumber')->nullable();
             $table->timestamps();

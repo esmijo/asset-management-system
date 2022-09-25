@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClinicController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ClinicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,16 +17,40 @@ use App\Http\Controllers\ClinicController;
 |
 */
 
-Route::get('/', [PageController::class, 'index']);
-Route::get('/login', [PageController::class, 'login']);
-Route::get('/register', [PageController::class, 'register']);
-Route::post('/register-clinic', [ClinicController::class, 'register']);
-Route::post('/register-person', [UserController::class, 'register']);
+//LOGGED-OUT PAGES
+Route::middleware('isLoggedOut')->group(function() {
+    Route::get('/login', [PageController::class, 'login']);
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::get('/register', [PageController::class, 'register']);
+    Route::post('/register-clinic', [ClinicController::class, 'register']);
+    Route::post('/register-patient', [UserController::class, 'register']);
+});
 
-//CLIENT PAGES
+//LOGGED-IN PAGES
+Route::middleware('isLoggedIn')->group(function() {
+    Route::get('/', [PageController::class, 'index']);
 
-//CLINIC PAGES
+    //CLIENT PAGES
+    Route::middleware('isPatient')->group(function() {
 
-//ADMIN PAGES
-Route::get('/administration', [PageController::class, 'administration']);
+    });
 
+    //CLINIC PAGES
+    Route::middleware('isAdmin')->group(function() {
+
+    });
+
+    //ADMIN PAGES
+    Route::middleware('isAdmin')->group(function() {
+        Route::get('/admin-dashboard', [PageController::class, 'administration']);
+        Route::get('/view-clinics', [PageController::class, 'view_clinics']);
+        Route::get('/update-clinic/{id}', [PageController::class, 'update_clinic']);
+        Route::post('/save-clinic', [ClinicController::class, 'save_update']);
+        Route::get('/view-patients', [PageController::class, 'view_patients']);
+        Route::get('/update-patient/{id}', [PageController::class, 'update_patient']);
+        Route::post('/save-patient', [PatientController::class, 'save_update']);
+    });
+
+    //LOGOUT
+    Route::get('/logout', [LoginController::Class, 'logout']);
+});

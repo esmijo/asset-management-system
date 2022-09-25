@@ -21,6 +21,7 @@ return new class extends Migration
             $table->double('mapLongtitude')->nullable();
             $table->string('contactNumber');
             $table->string('emailAddress');
+            $table->string('passWord');
             $table->timestamps();
         });
     }

@@ -32,6 +32,12 @@ form.login-form .form-group {
   width: 100%;
 }
 
+.admin-container {
+  padding-top: 10vh !important;
+}
+.admin-container .list-table {
+  padding-top: 20px !important;
+}
 .admin-container #admin-side-nav {
   background-color: #e4e4e4 !important;
   height: 100vh !important;
@@ -63,4 +69,13 @@ form.login-form .form-group {
   background-color: #00258a;
   color: #fff !important;
   font-weight: bold;
+}
+
+nav#main-nav-bar div.container-fluid div#navbarNavDropdown ul.navbar-nav {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-around !important;
+}
+nav#main-nav-bar div.container-fluid div#navbarNavDropdown ul.navbar-nav a {
+  color: red !important;
 }

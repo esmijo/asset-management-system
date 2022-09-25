@@ -28,7 +28,7 @@
               <!-- Nav tabs -->
               <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><strong>User (Person)</strong></button>
+                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><strong>User (Patient)</strong></button>
                 </li>
                 <li class="nav-item" role="presentation">
                   <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><strong>User (Clinic)</strong></button>
@@ -38,7 +38,7 @@
               <!-- User (Person Registration Form) -->
               <div class="tab-content">
                 <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  <form class="registration-form" action="/register-person" method="post" id="form-person">
+                  <form class="registration-form" action="/register-patient" method="post" id="form-person">
                     {{ csrf_field() }}
                     <input type="hidden" name="userType" value="person">
                     <div class="row">
@@ -79,7 +79,7 @@
                         </div>
                         <div class="form-group">
                           <label for="password"><span class="req">*</span> Password</label>
-                          <input type="text" class="form-control" id="password" name="password" required>
+                          <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         <div class="form-group">
                           <label for="email"><span class="req">*</span> Email Address <span id="email_available"></span></label></label>
@@ -87,7 +87,7 @@
                         </div>
                         <div class="form-group">
                           <label for=""></label>
-                          <input class="form-control btn btn-success" type="submit">
+                          <input class="form-control btn btn-success" type="submit" value="Register">
                         </div>
                       </div>
                     </div>
@@ -113,6 +113,10 @@
                           <label for="emailAddress"><span class="req">*</span> Email Address</label>
                           <input type="text" class="form-control" id="emailAddress" name="emailAddress" required>
                         </div>
+                        <div class="form-group">
+                          <label for="passWord"><span class="req">*</span> Password</label>
+                          <input type="password" class="form-control" id="passWord" name="passWord" required>
+                        </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
@@ -127,9 +131,10 @@
                           <label for="completeAddress"><span class="req">*</span> Complete Address</label>
                           <input type="text" class="form-control" id="completeAddress" name="completeAddress">
                         </div>
-                      </div>
-                      <div class="form-group">
-                        <button type="submit" class="btn btn-success">Register</button>
+                        <div class="form-group">
+                          <label for=""></label>
+                          <input class="form-control btn btn-success" type="submit" value="Register">
+                        </div>
                       </div>
                     </div>
                   </form>
