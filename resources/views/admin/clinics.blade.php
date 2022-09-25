@@ -14,6 +14,7 @@ View Clinics
           @include('layouts.side-nav')
         </div>
         <div class="col-md-10">
+          <input id="datetimepicker" type="text">
           <table class="table table-bordered list-table">
             <thead class="thead-dark">
               <tr>

@@ -30,9 +30,8 @@ class PageController extends Controller
     }
 
     public function update_clinic($id) {
-        $clinic = Clinic::find($id);
-        $clinic->update([]);
-        return redirect()->back();
+        $clinic = Clinic::find(1);
+        return view('admin.update-clinic', compact('clinic'));
     }
 
     public function view_patients() {
@@ -42,7 +41,6 @@ class PageController extends Controller
 
     public function update_patient($id) {
         $patient = User::find($id);
-        $patient->update([]);
-        return redirect()->back();
+        return view('admin.update-patient', compact('patient'));
     }
 }
