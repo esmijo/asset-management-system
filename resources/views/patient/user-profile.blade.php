@@ -1,13 +1,14 @@
 @extends('layouts.main-layout')
 
 @section('title')
-Update Patient Info
+View Clinics
 @endsection
 
 @section('content')
 <form class="asda-form" action="/update-patient/{{ $patient->id }}" method="post" id="form-person">
   {{ csrf_field() }}
   <input type="hidden" name="userType" value="person">
+  <input type="hidden" name="userID" value="{{ $patient->id }}">
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
@@ -46,11 +47,11 @@ Update Patient Info
       </div>
       <div class="form-group">
         <label for="username">Username <span id="user_available"></span></label>
-        <input type="text" class="form-control" id="username" name="userName" value="{{ $patient->userName }}">
+        <input type="text" class="form-control" id="username" name="username" value="{{ $patient->userName }}">
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="passWord" value="">
+        <input type="password" class="form-control" id="password" name="passWord" value="{{ $patient->passWord }}">
       </div>
       <div class="form-group">
         <label for="email">Email Address <span id="email_available"></span></label></label">

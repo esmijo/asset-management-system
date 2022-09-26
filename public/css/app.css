@@ -32,40 +32,40 @@ form.login-form .form-group {
   width: 100%;
 }
 
-.admin-container {
+.main-container {
   padding-top: 10vh !important;
 }
-.admin-container .list-table {
+.main-container .list-table {
   padding-top: 20px !important;
 }
-.admin-container #admin-side-nav {
+.main-container #admin-side-nav {
   background-color: #e4e4e4 !important;
   height: 100vh !important;
   padding: 0 5px 0 5px;
 }
-.admin-container .nav-link {
+.main-container .nav-link {
   font-weight: bold;
   margin: 5px;
 }
-.admin-container .nav-link:hover {
+.main-container .nav-link:hover {
   background-color: #001347;
   color: #fff !important;
 }
-.admin-container .dropdown-nav {
+.main-container .dropdown-nav {
   cursor: pointer;
 }
-.admin-container #clinics-collapse li,
-.admin-container #clients-collapse li {
+.main-container #clinics-collapse li,
+.main-container #clients-collapse li {
   padding: 5px;
 }
-.admin-container #clinics-collapse li a,
-.admin-container #clients-collapse li a {
+.main-container #clinics-collapse li a,
+.main-container #clients-collapse li a {
   margin-left: 30px;
   cursor: pointer;
   padding: 5px 10px 5px 10px;
 }
-.admin-container #clinics-collapse li a:hover,
-.admin-container #clients-collapse li a:hover {
+.main-container #clinics-collapse li a:hover,
+.main-container #clients-collapse li a:hover {
   background-color: #00258a;
   color: #fff !important;
   font-weight: bold;
@@ -78,4 +78,24 @@ nav#main-nav-bar div.container-fluid div#navbarNavDropdown ul.navbar-nav {
 }
 nav#main-nav-bar div.container-fluid div#navbarNavDropdown ul.navbar-nav a {
   color: red !important;
+}
+
+form.create-appointment-form {
+  border: #8b8b8b solid 1px;
+  padding: 10px;
+}
+form.create-appointment-form h1 {
+  text-align: center;
+}
+form.create-appointment-form .form-group {
+  margin-bottom: 10px;
+}
+form.create-appointment-form .form-group label {
+  font-weight: bold;
+}
+form.create-appointment-form .form-group .form-check label {
+  font-weight: normal;
+}
+form.create-appointment-form input[type=submit] {
+  width: 100% !important;
 }

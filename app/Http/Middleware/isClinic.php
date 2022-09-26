@@ -16,6 +16,10 @@ class isClinic
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (session('userType') == 'Clinic') {
+            return $next($request);
+        } else {
+            return redirect('/');
+        }
     }
 }

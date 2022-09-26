@@ -1,9 +1,11 @@
 @extends('layouts.main-layout')
 
 @section('title')
-Admin Panel
+  My Appointments
 @endsection
 
 @section('content')
-@endsection
+<h1>Clinic Profile</h1>
 
+
+@endsection

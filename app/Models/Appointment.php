@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Appointment extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    protected $casts = [
+        'servicesAvailed' => 'array'
+    ];
+
+    public function clinic() {
+        return $this->belongsTo(Clinic::class, 'clinicID', 'id');
+    }
 }

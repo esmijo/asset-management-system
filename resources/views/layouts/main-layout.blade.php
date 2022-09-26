@@ -10,6 +10,8 @@
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="/js/axios.min.js"></script>
+  {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script> --}}
   <script src="/js/scripts.js"></script>
   <title>@yield('title')</title>
 </head>
@@ -40,7 +42,20 @@
   </nav>
   <main>
     <div id="app">
-      @yield('content')
+      <div class="container main-container">
+        <div class="col-md-0"></div>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-3">
+              @include('layouts.side-nav')
+            </div>
+            <div class="col-md-9">
+              @yield('content')
+            </div>
+          </div>
+        </div>
+        <div class="col-md-0"></div>
+      </div>
     </div>
   </main>
 </body>

@@ -10,4 +10,8 @@ class Schedule extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function clinic() {
+        return $this->belongsTo(Clinic::class, 'clinicID', 'id');
+    }
 }

@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('lab_tests', function (Blueprint $table) {
             $table->id();
+            $table->integer('clinicID');
+            $table->string('testName');
+            $table->string('isAvailable');
+            $table->decimal('price')->nullable();
             $table->timestamps();
         });
     }

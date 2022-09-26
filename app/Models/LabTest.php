@@ -9,5 +9,7 @@ class LabTest extends Model
 {
     use HasFactory;
 
+    protected $table = 'lab_tests';
+
     protected $guarded = ['id'];
 }

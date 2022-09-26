@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Appointment;
 use App\Models\Clinic;
 use App\Models\User;
+use App\Models\LabTest;
+use App\Models\Schedule;
 
 class PageController extends Controller
 {
@@ -20,6 +23,7 @@ class PageController extends Controller
         return view('register');
     }
 
+    //Admin Pages
     public function administration() {
         return view('admin.admin-dashboard');
     }
@@ -43,4 +47,53 @@ class PageController extends Controller
         $patient = User::find($id);
         return view('admin.update-patient', compact('patient'));
     }
+    //End of Admin Pages
+    
+
+    //Patient Pages
+    public function search_clinic_services() {
+        return view('patient.clinic-services');
+    }
+
+    public function my_appointments() {
+        $appointments = Appointment::where('patientID', session('userID'))->orderByDesc('created_at')->get();
+        return view('patient.user-appointments', compact('appointments'));
+    }
+
+    public function create_appointment() {
+        $clinics = Clinic::all();
+        $user = User::where('id', session('userID'))->first();
+        return view('patient.create-appointment', compact('clinics', 'user'));
+    }
+
+    public function my_profile() {
+        $patient = User::where('userName', session('userName'))->first();
+        return view('patient.user-profile', compact('patient'));
+    }
+
+    //End of Patient Pages
+
+
+    //Clinic Pages
+    public function view_clinic() {
+        $var = Clinic::find(session('userID'));
+        return view('clinic.clinic', compact('var'));
+    }
+
+    public function view_clinic_appointments() {
+        $appointments = Appointment::where('clinicID', session('userID'))->get();
+        return view('clinic.clinic-appointments', compact('appointments'));
+    }
+
+    public function view_clinic_lab_tests() {
+        $var = LabTest::where('clinicID', session('userID'))->get();
+        return view('clinic.clinic-lab-tests', compact('var'));
+    }
+
+    public function view_clinic_time_schedules() {
+        $var = Schedule::where('clinicID', session('userID'))->get();
+        return view('clinic.clinic-schedules', compact('var'));
+    }
+
+    //End of Clinic Pages
 }

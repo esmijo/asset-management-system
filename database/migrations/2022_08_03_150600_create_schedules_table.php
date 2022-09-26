@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
+            $table->string('timeSlotName');
+            $table->time('realTime');
+            $table->integer('clinicID');
+            $table->string('isAvailable');
             $table->timestamps();
         });
     }

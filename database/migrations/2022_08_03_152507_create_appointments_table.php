@@ -18,7 +18,10 @@ return new class extends Migration
             $table->integer('patientID');
             $table->string('appointmentDate');
             $table->string('appointmentTime');
-            $table->string('doctorID');
+            $table->integer('doctorID')->nullable();
+            $table->integer('clinicID');
+            $table->json('servicesAvailed');
+            $table->string('status');
             $table->timestamps();
         });
     }

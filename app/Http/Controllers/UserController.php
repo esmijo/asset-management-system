@@ -23,4 +23,20 @@ class UserController extends Controller
         $user->save();
         return redirect('/login');
     }
+
+    public function save_update(Request $r) {
+        $user = User::where('id', $r->userID)->first();
+        $user->firstName = $r->firstName;
+        $user->middleName = $r->middleName;
+        $user->lastName = $r->lastName;
+        $user->sex = $r->sex;
+        $user->birthday = $r->birthday;
+        $user->username = $r->username;
+        $user->password = md5($r->password);
+        $user->emailAddress = $r->email;
+        $user->contactNumber = $r->contactNumber;
+        $user->userType = 'Normal';
+        $user->save();
+        return redirect()->back();
+    }
 }

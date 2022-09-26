@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\AxiosController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PageController;
@@ -32,12 +34,26 @@ Route::middleware('isLoggedIn')->group(function() {
 
     //CLIENT PAGES
     Route::middleware('isPatient')->group(function() {
-
+        Route::get('/clinics-and-services', [PageController::class, 'search_clinic_services']);
+        Route::get('/my-appointments', [PageController::class, 'my_appointments']);
+        Route::get('/create-appointment', [PageController::class, 'create_appointment']);
+        Route::post('/create-appointment', [AppointmentController::class, 'create_appointment']);
+        Route::post('/cancel-appointment/{id}', [AppointmentController::class, 'cancel_appointment']);
+        Route::get('/my-profile', [PageController::class, 'my_profile']);
     });
 
-    //CLINIC PAGES
-    Route::middleware('isAdmin')->group(function() {
+    //AXIOS Routes
+    Route::get('/axios_get_time_slot', [AxiosController::class, 'axios_get_time_slot']);
+    Route::get('/axios_get_available_time', [AxiosController::class, 'axios_get_available_time']);
+    Route::get('/axios_get_lab_tests', [AxiosController::class, 'axios_get_lab_tests']);
+    Route::get('/axios_live_search', [AxiosController::class, 'axios_live_search']);
 
+    //CLINIC PAGES
+    Route::middleware('isClinic')->group(function() {
+        Route::get('/clinic-profile', [PageController::class, 'view_clinic']);
+        Route::get('/clinic-appointments', [PageController::class, 'view_clinic_appointments']);
+        Route::get('/clinic-lab-tests', [PageController::class, 'view_clinic_lab_tests']);
+        Route::get('/clinic-time-schedules', [PageController::class, 'view_clinic_time_schedules']);
     });
 
     //ADMIN PAGES
@@ -48,8 +64,9 @@ Route::middleware('isLoggedIn')->group(function() {
         Route::post('/save-clinic', [ClinicController::class, 'save_update']);
         Route::get('/view-patients', [PageController::class, 'view_patients']);
         Route::get('/update-patient/{id}', [PageController::class, 'update_patient']);
-        Route::post('/save-patient', [PatientController::class, 'save_update']);
     });
+
+    Route::post('/update-patient/{id}', [UserController::class, 'save_update']);
 
     //LOGOUT
     Route::get('/logout', [LoginController::Class, 'logout']);
