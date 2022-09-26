@@ -31,12 +31,13 @@
 
         <div class="form-group">
           <label for="clinicName">Clinic Name</label>
-          <select class="form-control" id="clinicName" name="clinicName" required>
+          {{-- <select class="form-control" id="clinicName" name="clinicName" required>
             <option value="">Select one...</option>
             @foreach($clinics as $key => $clinic)
               <option value="{{ $clinic->id }}">{{ $clinic->clinicName }}</option>
             @endforeach
-          </select>
+          </select> --}}
+          <input type="text" class="form-control" id="clinicName" name="clinicName" data-val="{{ $clinic->id }}" value="{{ $clinic->clinicName }}" readonly>
         </div>
 
         <div class="form-group">
@@ -52,14 +53,20 @@
         </div>
 
         <div class="form-group">
-          <label for="appointmentTime">Total Amount Due</label>
-            <input type="number" class="form-control" id="appointmentDate" name="appointmentDate" readonly>
+          <label for="totalAmount">Total Amount Due</label>
+            <input type="number" class="form-control" id="totalAmount" name="totalAmount" value="0" readonly>
         </div>
 
       </div>
       <div class="col-md-6">
         <div class="form-group" id="servicesOffered">
           <label for="">Services Offered (Choose at least one.)</label>
+          @foreach($tests as $key => $test)
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="{{ $test->id }}" name="test-{{ $test->id }}" data-price="{{ $test->price }}" value="{{ $test->id }}">
+              <label class="form-check-label" for="{{ $test->id }}">{{ $test->testName }}</label>
+            </div>
+          @endforeach
         </div>
       </div>
       <hr>

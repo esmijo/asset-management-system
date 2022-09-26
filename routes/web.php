@@ -36,8 +36,8 @@ Route::middleware('isLoggedIn')->group(function() {
     Route::middleware('isPatient')->group(function() {
         Route::get('/clinics-and-services', [PageController::class, 'search_clinic_services']);
         Route::get('/my-appointments', [PageController::class, 'my_appointments']);
-        Route::get('/create-appointment', [PageController::class, 'create_appointment']);
-        Route::post('/create-appointment', [AppointmentController::class, 'create_appointment']);
+        Route::get('/create-appointment/{id}', [PageController::class, 'create_appointment']);
+        Route::post('/create-appointment/{id}', [AppointmentController::class, 'create_appointment']);
         Route::post('/cancel-appointment/{id}', [AppointmentController::class, 'cancel_appointment']);
         Route::get('/my-profile', [PageController::class, 'my_profile']);
     });
@@ -54,6 +54,7 @@ Route::middleware('isLoggedIn')->group(function() {
         Route::get('/clinic-appointments', [PageController::class, 'view_clinic_appointments']);
         Route::get('/clinic-lab-tests', [PageController::class, 'view_clinic_lab_tests']);
         Route::get('/clinic-time-schedules', [PageController::class, 'view_clinic_time_schedules']);
+        Route::post('/complete-appointment/{id}', [AppointmentController::class, 'complete_appointment']);
     });
 
     //ADMIN PAGES

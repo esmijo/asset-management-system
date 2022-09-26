@@ -25,6 +25,7 @@ class AppointmentController extends Controller
         $app->clinicID = $r->clinicName;
         $app->status = 'Pending';
         $app->servicesAvailed = $servicesOffered;
+        $app->totalAmount = $r->totalAmount;
         $app->save();
         return redirect('/');
     }
@@ -33,6 +34,15 @@ class AppointmentController extends Controller
         $app = Appointment::find($id);
         $app->update([
             'status' => 'Cancelled'
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function complete_appointment($id) {
+        $app = Appointment::find($id);
+        $app->update([
+            'status' => 'Completed'
         ]);
 
         return redirect()->back();

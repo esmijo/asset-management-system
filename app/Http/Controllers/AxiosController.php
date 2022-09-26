@@ -35,12 +35,13 @@ class AxiosController extends Controller
         if($r->keyWord == '') {
             $result = '';
         } else {
-            $result = Clinic::where('clinicName', 'like', '%'. $r->keyWord . '%')
+            $result = Clinic::with('tests')->where('clinicName', 'like', '%'. $r->keyWord . '%')
             ->orWhereHas('tests',function ( $query ) use($r) {
                 $query->where('testName','like', '%'. $r->keyWord . '%');
             })->get();
         }
         $data = $result;
+        $labtests = '';
         return response()->json($data);
     }
 }

@@ -32,9 +32,9 @@
           <li class="nav-item">
             <a href="/my-appointments" class="nav-link link-dark">My Appointments</a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="/create-appointment" class="nav-link link-dark">Create Appointment</a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a href="/my-profile" class="nav-link link-dark">My Profile</a>
           </li>

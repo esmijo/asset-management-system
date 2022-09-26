@@ -33,14 +33,14 @@ form.login-form .form-group {
 }
 
 .main-container {
-  padding-top: 10vh !important;
+  padding-top: 8vh !important;
 }
 .main-container .list-table {
   padding-top: 20px !important;
 }
 .main-container #admin-side-nav {
   background-color: #e4e4e4 !important;
-  height: 100vh !important;
+  height: 92vh !important;
   padding: 0 5px 0 5px;
 }
 .main-container .nav-link {
