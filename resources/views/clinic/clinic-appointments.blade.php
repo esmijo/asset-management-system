@@ -17,6 +17,10 @@
     </h2>
     <div id="collapse-{{ $key }}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#appointmentsAccordion">
       <div class="accordion-body">
+        
+      {{-- @foreach($app->servicesAvailed as $services)
+        {{ $services->filename }}
+      @endforeach --}}
         <table class="table">
           <thead>
             <tr>
@@ -34,11 +38,16 @@
               <td>{{ $app->appointmentTime }}</td>
               <td>{{ $app->status }}</td>
               <td>
-                @if($app->status == 'Cancelled' || $app->status == 'Completed')
+                @if($app->status == 'Cancelled')
                   <button class="btn btn-dark">No Actions Allowed</button>
-                @else 
-                  <a href="/edit-appointment/{{ $app->id }}" class="btn btn-warning">Edit</a>
-                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button>
+                @elseif($app->status == 'Completed')
+                  <button class="btn btn-primary">Completed</button>
+                @else
+                  <form action="/complete-appointment/{{ $app->id }}" method="post">
+                    {{ csrf_field() }}
+                    <button class="btn btn-success">Complete</button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button>
+                  </form>
                 @endif
 
                 <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">

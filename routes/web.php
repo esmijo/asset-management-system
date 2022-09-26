@@ -47,6 +47,7 @@ Route::middleware('isLoggedIn')->group(function() {
     Route::get('/axios_get_available_time', [AxiosController::class, 'axios_get_available_time']);
     Route::get('/axios_get_lab_tests', [AxiosController::class, 'axios_get_lab_tests']);
     Route::get('/axios_live_search', [AxiosController::class, 'axios_live_search']);
+    Route::get('/axios_live_search_tests', [AxiosController::class, 'axios_live_search_tests']);
 
     //CLINIC PAGES
     Route::middleware('isClinic')->group(function() {

@@ -82,7 +82,7 @@ class PageController extends Controller
     }
 
     public function view_clinic_appointments() {
-        $appointments = Appointment::where('clinicID', session('userID'))->get();
+        $appointments = Appointment::where('clinicID', session('userID'))->orderByDesc('created_at')->get();
         return view('clinic.clinic-appointments', compact('appointments'));
     }
 

@@ -99,3 +99,6 @@ form.create-appointment-form .form-group .form-check label {
 form.create-appointment-form input[type=submit] {
   width: 100% !important;
 }
+form.create-appointment-form div#appointmentsAccordion * {
+  color: red !important;
+}

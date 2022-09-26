@@ -11,10 +11,10 @@ class AppointmentController extends Controller
 
         $servicesOffered = array();
         for($x = 1; $x <= $r->servicesCount; $x++) {
-            if($r->{'test-' . $x} == $x) {
-                array_push($servicesOffered, (int)$r->{'test-' . $x});
-            } else {
-                array_push($servicesOffered, 0);
+            if($r->{'test-' . $x}) {
+                array_push($servicesOffered, $r->{'test-' . $x});
+            // } else {
+            //     array_push($servicesOffered, 0);
             }
         }
 

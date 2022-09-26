@@ -90,34 +90,52 @@ $(document).ready( function () {
         $.each(result, function(index, val) {
           let state = ''
           if(index == 0) {
-            state = 'show'
+            state = ''
           } else {
             state = ''
           }
-          console.log(this.tests)
           $('#clinicAccordion').append('<div class="accordion-item">' +
-            '<h2 class="accordion-header" id="heading' + index + '">' +
-              '<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + index + '" aria-expanded="true" aria-controls="collapseOne"><h3>' + val.clinicName + '</h3>' +
+            '<h2 class="accordion-header create-appt-btn" data-id="'+ val.id + '" id="heading-' + index + '">' +
+              '<button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + index + '" aria-expanded="true" aria-controls="collapseOne" ><h3>' + val.clinicName + '</h3>' +
               '</button>' +
             '</h2>' +
             '<div id="collapse-' + index + '" class="accordion-collapse collapse '+ state + '" aria-labelledby="heading' + index + '" data-bs-parent="#clinicAccordion">' +
               '<div class="accordion-body">' +
                 '<div class="row">' +
-                  // '<table id="lab_tests"><tr><th>Test Name</th><th>Price</th><th>ID</th></tr></table>' +
-                  '<h2>' + val.completeAddress + '</h4>' +
-                  '<h4>' + val.contactNumber + '</h4>' +
-                  '<h4>' + val.emailAddress + '</h4>' +
+                  // '<div class="col-md-6">' +
+                    '<h2>' + val.completeAddress + '</h4>' +
+                    '<h4>' + val.contactNumber + '</h4>' +
+                    '<h4>' + val.emailAddress + '</h4>' +
+                  // '</div>' +
+
+                  // '<div class="col-md-6">' +
+                  //   '<table id="lab_tests_'+ val.id +'"><tr><th>Test Name</th><th>Price</th></tr></table>' +
+                  // '</div>' +
                   '<a href="/create-appointment/' + val.id + '" class="btn btn-success">Book an Appointment</a>' +
                   '</div>' +
               '</div>' +
             '</div>' +
           '</div>')
+
+          //   console.log(tests)
+          // })
             // for(x = 0; x < this.tests.length; x++) {
             //   $('#lab_tests').append('<tr><td>Test Name</td>1<td>Price</td><td>ID</td></tr>')
             // }
         }) //END OF EACH RES
       })
     }
+
+    // $('.create-appt-btn').click(function() {
+    //   let btn_id = $(this).data('id')
+    //   console.log(btn_id)
+    //   axios.get(`/axios_live_search_tests?clinicID=${btn_id}`).then(res => {
+    //     let tests = res.data
+    //     for(x = 0; x < tests.length; x++) {
+    //       $('#lab_tests_' + btn_id).append('<tr><td>Test Name</td>1<td>Price</td><td>ID</td></tr>')
+    //     }
+    //   })
+    // })
   }
 
 })

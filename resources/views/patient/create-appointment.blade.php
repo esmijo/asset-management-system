@@ -5,10 +5,10 @@
 @endsection
 
 @section('content')
-  <form action="/create-appointment" class="create-appointment-form" method="post">
+  <form action="/create-appointment/{{ $clinic->id }}" class="create-appointment-form" method="post">
     {{ csrf_field() }}
     <h1>CREATE NEW APPOINTMENT</h1>
-    <input type="hidden" name="servicesCount" value="" id="servicesCount">
+    <input type="hidden" name="servicesCount" value="{{ count($tests) }}" id="">
     <input type="hidden" name="userID" value="{{ $user->id }}">
     <hr>
     <div class="row">
@@ -37,7 +37,8 @@
               <option value="{{ $clinic->id }}">{{ $clinic->clinicName }}</option>
             @endforeach
           </select> --}}
-          <input type="text" class="form-control" id="clinicName" name="clinicName" data-val="{{ $clinic->id }}" value="{{ $clinic->clinicName }}" readonly>
+          <input type="text" class="form-control" id="clinicNameOnDisplay" name="clinicNameOnDisplay" value="{{ $clinic->clinicName }}" readonly>
+          <input type="hidden" class="form-control" id="clinicName" name="clinicName" data-val="{{ $clinic->id }}" value="{{ $clinic->id }}" readonly>
         </div>
 
         <div class="form-group">
@@ -63,7 +64,7 @@
           <label for="">Services Offered (Choose at least one.)</label>
           @foreach($tests as $key => $test)
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="{{ $test->id }}" name="test-{{ $test->id }}" data-price="{{ $test->price }}" value="{{ $test->id }}">
+              <input class="form-check-input" type="checkbox" id="{{ $test->id }}" name="test-{{ $test->id }}" data-price="{{ $test->price }}" value="{{ $test->testName }}">
               <label class="form-check-label" for="{{ $test->id }}">{{ $test->testName }}</label>
             </div>
           @endforeach

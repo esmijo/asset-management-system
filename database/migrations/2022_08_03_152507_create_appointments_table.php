@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('clinicID');
             $table->json('servicesAvailed');
             $table->string('status');
+            $table->decimal('totalAmount');
             $table->timestamps();
         });
     }
