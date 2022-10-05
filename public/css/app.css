@@ -34,12 +34,13 @@ form.login-form .form-group {
 
 .main-container {
   padding-top: 8vh !important;
+  background-color: #e4e4e4;
 }
 .main-container .list-table {
   padding-top: 20px !important;
 }
 .main-container #admin-side-nav {
-  background-color: #e4e4e4 !important;
+  background-color: #8b8b8b !important;
   height: 92vh !important;
   padding: 0 5px 0 5px;
 }
@@ -69,6 +70,38 @@ form.login-form .form-group {
   background-color: #00258a;
   color: #fff !important;
   font-weight: bold;
+}
+.main-container #appointmentsAccordion,
+.main-container #searchClinicsContainer,
+.main-container #createAppointmentsContainer,
+.main-container #userProfileContainer,
+.main-container #editAppointmentsContainer {
+  height: 92vh !important;
+  overflow-x: scroll;
+  height: 92vh !important;
+  overflow-x: scroll;
+}
+.main-container #appointmentsAccordion h1, .main-container #appointmentsAccordion h2, .main-container #appointmentsAccordion h3,
+.main-container #searchClinicsContainer h1,
+.main-container #searchClinicsContainer h2,
+.main-container #searchClinicsContainer h3,
+.main-container #createAppointmentsContainer h1,
+.main-container #createAppointmentsContainer h2,
+.main-container #createAppointmentsContainer h3,
+.main-container #userProfileContainer h1,
+.main-container #userProfileContainer h2,
+.main-container #userProfileContainer h3,
+.main-container #editAppointmentsContainer h1,
+.main-container #editAppointmentsContainer h2,
+.main-container #editAppointmentsContainer h3 {
+  text-align: center;
+}
+.main-container #clinicAccordion h2, .main-container #clinicAccordion h3 {
+  text-align: center;
+}
+
+body {
+  background-color: #fff;
 }
 
 nav#main-nav-bar div.container-fluid div#navbarNavDropdown ul.navbar-nav {

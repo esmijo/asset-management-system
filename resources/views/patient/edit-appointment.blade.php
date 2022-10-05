@@ -1,16 +1,17 @@
 @extends('layouts.main-layout')
 
 @section('title')
-  Create New Appointment
+  Edit Appointment Details
 @endsection
 
 @section('content')
-  <div id="createAppointmentsContainer">
-    <form action="/create-appointment/{{ $clinic->id }}" class="create-appointment-form" method="post">
+  <div id="editAppointmentsContainer">
+    <form action="/edit-appointment/{{ $appointment->id }}" class="create-appointment-form" method="post">
       {{ csrf_field() }}
-      <h1>CREATE NEW APPOINTMENT</h1>
+      <h1>EDIT APPOINTMENT DETAILS</h1>
       <input type="hidden" name="servicesCount" value="{{ count($tests) }}" id="">
       <input type="hidden" name="userID" value="{{ $user->id }}">
+      <input type="hidden" name="appointmentID" value="{{ $appointment->id }}">
       <hr>
       <div class="row">
         <div class="col-md-6">
@@ -32,12 +33,7 @@
   
           <div class="form-group">
             <label for="clinicName">Clinic Name</label>
-            {{-- <select class="form-control" id="clinicName" name="clinicName" required>
-              <option value="">Select one...</option>
-              @foreach($clinics as $key => $clinic)
-                <option value="{{ $clinic->id }}">{{ $clinic->clinicName }}</option>
-              @endforeach
-            </select> --}}
+
             <input type="text" class="form-control" id="clinicNameOnDisplay" name="clinicNameOnDisplay" value="{{ $clinic->clinicName }}" readonly>
             <input type="hidden" class="form-control" id="clinicName" name="clinicName" data-val="{{ $clinic->id }}" value="{{ $clinic->id }}" readonly>
           </div>
@@ -73,7 +69,7 @@
         </div>
         <hr>
         <div class="form-group">
-          <input type="submit" class="btn btn-success" id="create-appointment-btn" value="Submit">
+          <input type="submit" class="btn btn-success" id="create-appointment-btn" value="Update Appointment Details">
         </div>
       </div>
   

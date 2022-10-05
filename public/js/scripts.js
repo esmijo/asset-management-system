@@ -8,43 +8,84 @@ $(document).ready( function () {
     // $('#appointmentDate').prop('disabled', true)
     $('#appointmentTime').prop('disabled', true)
     $('#create-appointment-btn').prop('disabled', true)
-    // $('#clinicName').on('change', function() {
-    //   $('#appointmentDate').prop('disabled', false)
-    //   $('#servicesOffered').empty()
-    //   $('#servicesOffered').append('<label for="">Services Offered (Choose at least one.)</label>')
-    //   let cid = $(this).val()
-    //   axios.get(`/axios_get_lab_tests?ClinicID=${cid}`).then(res => {
-    //     let services = res.data
-    //     $('#servicesCount').val(services.length)
-    //     $.each(services, function(index, val) {
-    //       $('#servicesOffered').append('<div class="form-check form-switch">' +
-    //         '<input class="form-check-input" type="checkbox" id="' + val.id + ' " name=test-' + val.id + ' value="' + val.id +'">' +
-    //         '<label class="form-check-label" for="' + val.id + ' ">' + val.testName + '</label>' +
-    //       '</div>')
-    //     })
-        let total = parseFloat(0.00)
-        $('.form-check-input').on('change', function() {
-          // console.log($(this).val())
 
-          let total = 0
+    let total = parseFloat(0.00)
+    $('.form-check-input').on('change', function() {
+      // console.log($(this).val())
 
-          $('input:checkbox:checked').each(function(){
-            total += isNaN(parseFloat($(this).data('price'))) ? 0 : parseInt($(this).data('price'))
-          })
-          
-          checked = $("input[type=checkbox]:checked").length
-          if(checked > 0) {
-            // total = total + parseFloat($(this).data('price'))
-            $('#create-appointment-btn').prop('disabled', false)
-          } else {
-            // total = total - parseFloat($(this).data('price'))
-            $('#create-appointment-btn').prop('disabled', true)
-          }
-          console.log(total)
-          $('#totalAmount').val(total)
-        })
+      let total = 0
+
+      $('input:checkbox:checked').each(function(){
+        total += isNaN(parseFloat($(this).data('price'))) ? 0 : parseInt($(this).data('price'))
+      })
+      
+      checked = $("input[type=checkbox]:checked").length
+      if(checked > 0) {
+        // total = total + parseFloat($(this).data('price'))
+        $('#create-appointment-btn').prop('disabled', false)
+      } else {
+        // total = total - parseFloat($(this).data('price'))
+        $('#create-appointment-btn').prop('disabled', true)
+      }
+      console.log(total)
+      $('#totalAmount').val(total)
+    })
     //   })
     // })
+
+    $('#appointmentDate').on('change', function () {
+      let clinicID = $('#clinicName').data('val')
+      let appointmentDate = $(this).val()
+      // console.log($(this).val())
+      axios.get(`/axios_get_time_slot?clinicID=${clinicID}&appointmentDate=${appointmentDate}`).then(res => {
+        $('#appointmentTime').prop('disabled', false)
+        $('#appointmentTime').empty()
+        $('#appointmentTime').append('<option value="">Choose a time slot...</>')
+        let time_slots = res.data
+        console.log(time_slots)
+        $.each(time_slots, function(index, val) {
+          // axios.get(`/axios_get_available_time?appTime=${val.id}`).then(res => {
+          //   let availability = res.data
+          //   if(availability == 'available') {
+              $('#appointmentTime').append(
+                $('<option>', {
+                    value: val.realTime,
+                    text: val.timeSlotName
+                })
+              ) //Change Time Slot dropdown values
+          //   }
+          // })
+        })
+      })
+    })
+
+  }
+
+
+  if(location.pathname.indexOf('/edit-appointment') == 0) {
+    // $('#appointmentTime').prop('disabled', true)
+    $('#create-appointment-btn').prop('disabled', true)
+    let total = parseFloat(0.00)
+    $('.form-check-input').on('change', function() {
+      // console.log($(this).val())
+
+      let total = 0
+
+      $('input:checkbox:checked').each(function(){
+        total += isNaN(parseFloat($(this).data('price'))) ? 0 : parseInt($(this).data('price'))
+      })
+      
+      checked = $("input[type=checkbox]:checked").length
+      if(checked > 0) {
+        // total = total + parseFloat($(this).data('price'))
+        $('#create-appointment-btn').prop('disabled', false)
+      } else {
+        // total = total - parseFloat($(this).data('price'))
+        $('#create-appointment-btn').prop('disabled', true)
+      }
+      console.log(total)
+      $('#totalAmount').val(total)
+    })
 
     $('#appointmentDate').on('change', function () {
       let cid = $('#clinicName').data('val')
@@ -70,10 +111,23 @@ $(document).ready( function () {
         })
       })
     })
-
   }
 
-  
+
+  if(location.pathname =='/my-profile') {
+    $('#update-profile-btn').prop('disabled', 'disabled')
+    $('#password').on('keyup', function() {
+      let password = $('#password').val()
+      axios.get(`/axios_match_password?passWord=${password}`).then(res => {
+        console.log(res.data)
+        if(res.data == 'true') {
+          $('#update-profile-btn').prop('disabled', false)
+        } else {
+          $('#update-profile-btn').prop('disabled', true)
+        }
+      })
+    })
+  }
 
   if(location.pathname == '/clinics-and-services') {
     console.log('here')
@@ -102,26 +156,43 @@ $(document).ready( function () {
             '<div id="collapse-' + index + '" class="accordion-collapse collapse '+ state + '" aria-labelledby="heading' + index + '" data-bs-parent="#clinicAccordion">' +
               '<div class="accordion-body">' +
                 '<div class="row">' +
-                  // '<div class="col-md-6">' +
-                    '<h2>' + val.completeAddress + '</h4>' +
-                    '<h4>' + val.contactNumber + '</h4>' +
-                    '<h4>' + val.emailAddress + '</h4>' +
-                  // '</div>' +
+                  '<div class="col-md-6">' +
+                    '<div class="row">' +
+                      '<h3>Clinic Details</h3>' +
+                      '<table class="table">' +
+                      '<tr><th>Address</th><th> : </th><td>' + val.completeAddress + '</td></tr>' +
+                      '<tr><th>Contact Number</th><th> : </th><td>' + val.contactNumber + '</td></tr>' +
+                      '<tr><th>Email Address</th><th> : </th><td>' + val.emailAddress + '</td></tr>' +
+                      '</table>' +
+                    '</div>' +
+                    '<div class="row">' +
+                    '<br><h3>Clinic Location</h3>' +
+                    '<iframe width="450" height="250" frameborder="0" style="border:0" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBpg1YYfO6E5bT2solb9CAYwv2WOf2Atik&q=' + val.mapLatitude + ', ' + val.mapLongtitude + '"></iframe>' +
+                    '</div>' +
+                  '</div>' +
 
-                  // '<div class="col-md-6">' +
-                  //   '<table id="lab_tests_'+ val.id +'"><tr><th>Test Name</th><th>Price</th></tr></table>' +
-                  // '</div>' +
+                  '<div class="col-md-6">' +
+                  '<h3>Services Offered</h3>' +
+                    '<table id="lab_tests_'+ val.id +'" class="table table-bordered"><tr><th>Test Name</th><th>Price</th></tr></table>' +
+                  '</div>' +
                   '<a href="/create-appointment/' + val.id + '" class="btn btn-success">Book an Appointment</a>' +
                   '</div>' +
               '</div>' +
             '</div>' +
           '</div>')
 
-          //   console.log(tests)
+            console.log(this.tests)
           // })
-            // for(x = 0; x < this.tests.length; x++) {
-            //   $('#lab_tests').append('<tr><td>Test Name</td>1<td>Price</td><td>ID</td></tr>')
+            for(x = 0; x < this.tests.length; x++) {
+              $('#lab_tests_' + val.id).append('<tr><td>' + this.tests[x].testName + '</td>1<td>' + this.tests[x].price + '</td></tr>')
+            }
+            // var output = '';
+            // for (var property in val.tests) {
+            //   output += property + ': ' + object[property]+'; ';
+            //   console.log(output)
             // }
+            // console.log(output)
+            // $('#lab_tests_' + val.id).append(output)
         }) //END OF EACH RES
       })
     }

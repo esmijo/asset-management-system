@@ -40,6 +40,8 @@ Route::middleware('isLoggedIn')->group(function() {
         Route::post('/create-appointment/{id}', [AppointmentController::class, 'create_appointment']);
         Route::post('/cancel-appointment/{id}', [AppointmentController::class, 'cancel_appointment']);
         Route::get('/my-profile', [PageController::class, 'my_profile']);
+        Route::get('/edit-appointment/{id}', [PageController::class, 'edit_appointment']);
+        Route::post('/edit-appointment/{id}', [AppointmentController::class, 'edit_appointment']);
     });
 
     //AXIOS Routes
@@ -48,6 +50,7 @@ Route::middleware('isLoggedIn')->group(function() {
     Route::get('/axios_get_lab_tests', [AxiosController::class, 'axios_get_lab_tests']);
     Route::get('/axios_live_search', [AxiosController::class, 'axios_live_search']);
     Route::get('/axios_live_search_tests', [AxiosController::class, 'axios_live_search_tests']);
+    Route::get('/axios_match_password', [AxiosController::class, 'axios_match_password']);
 
     //CLINIC PAGES
     Route::middleware('isClinic')->group(function() {

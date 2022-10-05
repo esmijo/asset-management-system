@@ -32,11 +32,17 @@ class UserController extends Controller
         $user->sex = $r->sex;
         $user->birthday = $r->birthday;
         $user->username = $r->username;
-        $user->password = md5($r->password);
+        $user->password = md5($r->passWord);
         $user->emailAddress = $r->email;
         $user->contactNumber = $r->contactNumber;
         $user->userType = 'Normal';
         $user->save();
+        return redirect()->back();
+    }
+
+    public function change_password(Request $r) {
+        $user = User::where('id', $r->userID)->first();
+        $user->password = md5($r->passWord);
         return redirect()->back();
     }
 }

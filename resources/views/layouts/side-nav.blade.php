@@ -27,7 +27,7 @@
           </li>
         @else
         <li class="nav-item">
-          <a href="/clinics-and-services" class="nav-link link-dark">Search for Clinics and Services</a>
+          <a href="/clinics-and-services" class="nav-link link-dark">Clinics and Services</a>
         </li>
           <li class="nav-item">
             <a href="/my-appointments" class="nav-link link-dark">My Appointments</a>

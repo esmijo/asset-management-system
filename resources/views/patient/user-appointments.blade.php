@@ -5,16 +5,16 @@
 @endsection
 
 @section('content')
-<h1>My Appointments</h1>
 <div class="accordion" id="appointmentsAccordion">
+  <h1>My Appointments</h1>
   @foreach($appointments as $key => $app)
   <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
+    <h2 class="accordion-header" id="heading-{{ $key + 1 }}">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $key }}" aria-expanded="true" aria-controls="collapseOne">
         <strong>{{ $app->appointmentDate }}, {{ $app->appointmentTime }}, {{ $app->clinic->clinicName }}</strong>
       </button>
     </h2>
-    <div id="collapse-{{ $key }}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#appointmentsAccordion">
+    <div id="collapse-{{ $key }}" class="accordion-collapse collapse show" aria-labelledby="heading-{{ $key + 1 }}" data-bs-parent="#appointmentsAccordion">
       <div class="accordion-body">
         <table class="table">
           <thead>
@@ -37,10 +37,10 @@
                   <button class="btn btn-dark">No Actions Allowed</button>
                 @else 
                   <a href="/edit-appointment/{{ $app->id }}" class="btn btn-warning">Edit</a>
-                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button>
+                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelModal-{{ $key + 1 }}">Cancel</button>
                 @endif
 
-                <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+                <div class="modal fade" id="cancelModal-{{ $key + 1 }}" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -67,9 +67,6 @@
       </div>
     </div>
   </div>
-
-
-
   @endforeach
 </div>
 @endsection

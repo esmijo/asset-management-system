@@ -47,4 +47,26 @@ class AppointmentController extends Controller
 
         return redirect()->back();
     }
+
+    public function edit_appointment(Request $r) {
+        $servicesOffered = array();
+        for($x = 1; $x <= $r->servicesCount; $x++) {
+            if($r->{'test-' . $x}) {
+                array_push($servicesOffered, $r->{'test-' . $x});
+            // } else {
+            //     array_push($servicesOffered, 0);
+            }
+        }
+
+        $app = Appointment::find($r->appointmentID);
+        $app->patientID = $r->userID;
+        $app->appointmentDate = $r->appointmentDate;
+        $app->appointmentTime = $r->appointmentTime;
+        $app->clinicID = $r->clinicName;
+        $app->status = 'Pending';
+        $app->servicesAvailed = $servicesOffered;
+        $app->totalAmount = $r->totalAmount;
+        $app->save();
+        return redirect('/');
+    }
 }

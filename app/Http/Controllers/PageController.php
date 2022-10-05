@@ -67,6 +67,14 @@ class PageController extends Controller
         return view('patient.create-appointment', compact('clinic', 'user', 'tests'));
     }
 
+    public function edit_appointment($id) {
+        $appointment = Appointment::find($id);
+        $user = User::where('id', session('userID'))->first();
+        $tests = LabTest::where('clinicID', $appointment->clinicID)->get();
+        $clinic = Clinic::find( $appointment->clinicID);
+        return view('patient.edit-appointment', compact('appointment', 'user', 'tests', 'clinic'));
+    }
+
     public function my_profile() {
         $patient = User::where('userName', session('userName'))->first();
         return view('patient.user-profile', compact('patient'));
