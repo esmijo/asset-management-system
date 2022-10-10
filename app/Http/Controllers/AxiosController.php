@@ -17,15 +17,15 @@ class AxiosController extends Controller
         return response()->json($data);
     }
 
-    public function axios_get_available_time(Request $r) {
-        $appCheck = Appointment::where('clinicID', 1)->where('appointmentTime', $r->appTime)->first();
-        if($appCheck) {
-            $data = 'taken';
-        } else {
-            $data = 'available';
-        }
-        return response()->json($data);
-    }
+    // public function axios_get_available_time(Request $r) {
+    //     $appCheck = Appointment::where('clinicID', 1)->where('appointmentTime', $r->appTime)->first();
+    //     if($appCheck) {
+    //         $data = 'taken';
+    //     } else {
+    //         $data = 'available';
+    //     }
+    //     return response()->json($data);
+    // }
 
     public function axios_get_lab_tests(Request $r) {
         $data = LabTest::where('clinicID', $r->ClinicID)->where('isAvailable', 'Y')->get();

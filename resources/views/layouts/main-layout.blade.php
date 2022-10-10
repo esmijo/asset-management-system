@@ -16,7 +16,7 @@
   <title>@yield('title')</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" id="main-nav-bar">
+  {{-- <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" id="main-nav-bar">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
         </ul>
       </div>
     </div>
-  </nav>
+  </nav> --}}
   <main>
     <div id="app">
       <div class="container main-container">
@@ -49,7 +49,7 @@
             <div class="col-md-3">
               @include('layouts.side-nav')
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 content-container">
               @yield('content')
             </div>
           </div>

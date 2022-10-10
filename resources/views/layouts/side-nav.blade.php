@@ -39,6 +39,9 @@
             <a href="/my-profile" class="nav-link link-dark">My Profile</a>
           </li>
         @endif
+        <li class="nav-item">
+          <a href="/logout" class="nav-link link-dark">Logout</a>
+        </li>
       </ul>
     </div>
   </div>

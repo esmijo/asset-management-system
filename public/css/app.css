@@ -1,11 +1,17 @@
 form.login-form {
-  margin-top: 30%;
+  margin-top: 5%;
   padding: 20px;
   border: #8b8b8b 1px solid;
   border-radius: 10px;
 }
 form.login-form .form-group {
   margin-bottom: 10px;
+}
+form.login-form img {
+  width: 80%;
+  border: 1px #cdcdcd solid;
+  border-radius: 10px;
+  margin: 0 10% 5% 10%;
 }
 
 .registration-container {
@@ -33,15 +39,18 @@ form.login-form .form-group {
 }
 
 .main-container {
-  padding-top: 8vh !important;
   background-color: #e4e4e4;
 }
 .main-container .list-table {
   padding-top: 20px !important;
 }
+.main-container .content-container {
+  margin-top: 20px;
+}
 .main-container #admin-side-nav {
   background-color: #8b8b8b !important;
-  height: 92vh !important;
+  margin-top: 1vh;
+  height: 98vh !important;
   padding: 0 5px 0 5px;
 }
 .main-container .nav-link {

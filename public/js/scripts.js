@@ -3,7 +3,6 @@ $(document).ready( function () {
   $('.list-table').DataTable()
 
 
-  // if (location.pathname == '/create-appointment') {
   if(location.pathname.indexOf('/create-appointment') == 0) {
     // $('#appointmentDate').prop('disabled', true)
     $('#appointmentTime').prop('disabled', true)
@@ -90,7 +89,7 @@ $(document).ready( function () {
     $('#appointmentDate').on('change', function () {
       let cid = $('#clinicName').data('val')
       console.log($(this).val())
-      axios.get(`/axios_get_time_slot?ClinicID=${cid}`).then(res => {
+      axios.get(`/axios_get_time_slot?ClinicID=${cid}&appointmentDate=${appointmentDate}`).then(res => {
         $('#appointmentTime').prop('disabled', false)
         $('#appointmentTime').empty()
         $('#appointmentTime').append('<option value="">Choose a time slot...</>')

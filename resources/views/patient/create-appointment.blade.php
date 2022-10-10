@@ -39,6 +39,7 @@
               @endforeach
             </select> --}}
             <input type="text" class="form-control" id="clinicNameOnDisplay" name="clinicNameOnDisplay" value="{{ $clinic->clinicName }}" readonly>
+            
             <input type="hidden" class="form-control" id="clinicName" name="clinicName" data-val="{{ $clinic->id }}" value="{{ $clinic->id }}" readonly>
           </div>
   
