@@ -28,26 +28,30 @@ class LoginController extends Controller
 
         $passWord = md5($r->passWord);
 
-        if($user->passWord == $passWord) {
-            
-            if($r->userType == 'Clinic') {
-                session()->put('userName', $user->emailAddress);
-            } else {
-                session()->put('userName', $user->userName);
-            }
-            session()->put('userID', $user->id);
-            session()->put('userType', $userType);
+        if($user) {
+            if($user->passWord == $passWord) {
+                
+                if($r->userType == 'Clinic') {
+                    session()->put('userName', $user->emailAddress);
+                } else {
+                    session()->put('userName', $user->userName);
+                }
+                session()->put('userID', $user->id);
+                session()->put('userType', $userType);
 
-            if($userType == 'Admin') {
-                return redirect('/admin-dashboard');
-            } else if($userType == 'Normal') {
-                return redirect('/');
+                if($userType == 'Admin') {
+                    return redirect('/admin-dashboard');
+                } else if($userType == 'Normal') {
+                    return redirect('/my-profile');
+                } else {
+                    return redirect('/clinic-profile');
+                }
+                
             } else {
-                return redirect('/clinic-profile');
+                return redirect()->back()->with('error', 'Login failed. ');
             }
-            
         } else {
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Login failed. ');
         }
     }
 

@@ -13,12 +13,27 @@ form.login-form img {
   border-radius: 10px;
   margin: 0 10% 5% 10%;
 }
+form.login-form .login-error strong {
+  color: red;
+}
+form.login-form .login-message {
+  margin-bottom: 10px;
+}
+form.login-form .register-success strong {
+  color: green;
+}
 
 .registration-container {
   margin-top: 10%;
   padding: 20px;
   border: #8b8b8b 1px solid;
   border-radius: 10px;
+}
+.registration-container .login-error {
+  margin-bottom: 10px;
+}
+.registration-container .login-error strong {
+  color: red;
 }
 .registration-container form.registration-form {
   margin-top: 20px;
@@ -39,7 +54,7 @@ form.login-form img {
 }
 
 .main-container {
-  background-color: #e4e4e4;
+  background-color: #d9eff7;
 }
 .main-container .list-table {
   padding-top: 20px !important;
@@ -48,7 +63,7 @@ form.login-form img {
   margin-top: 20px;
 }
 .main-container #admin-side-nav {
-  background-color: #8b8b8b !important;
+  background-color: #9bbbfc !important;
   margin-top: 1vh;
   height: 98vh !important;
   padding: 0 5px 0 5px;
@@ -58,8 +73,8 @@ form.login-form img {
   margin: 5px;
 }
 .main-container .nav-link:hover {
-  background-color: #001347;
-  color: #fff !important;
+  background-color: #4741a6;
+  color: #f9ce69 !important;
 }
 .main-container .dropdown-nav {
   cursor: pointer;
@@ -84,7 +99,11 @@ form.login-form img {
 .main-container #searchClinicsContainer,
 .main-container #createAppointmentsContainer,
 .main-container #userProfileContainer,
-.main-container #editAppointmentsContainer {
+.main-container #editAppointmentsContainer,
+.main-container #clinicScheduleContainer,
+.main-container #clinicLabTestContainer,
+.main-container #clinicAppointmentsContainer,
+.main-container #clinicProfileContainer {
   height: 92vh !important;
   overflow-x: scroll;
   height: 92vh !important;
@@ -102,11 +121,75 @@ form.login-form img {
 .main-container #userProfileContainer h3,
 .main-container #editAppointmentsContainer h1,
 .main-container #editAppointmentsContainer h2,
-.main-container #editAppointmentsContainer h3 {
+.main-container #editAppointmentsContainer h3,
+.main-container #clinicScheduleContainer h1,
+.main-container #clinicScheduleContainer h2,
+.main-container #clinicScheduleContainer h3,
+.main-container #clinicLabTestContainer h1,
+.main-container #clinicLabTestContainer h2,
+.main-container #clinicLabTestContainer h3,
+.main-container #clinicAppointmentsContainer h1,
+.main-container #clinicAppointmentsContainer h2,
+.main-container #clinicAppointmentsContainer h3,
+.main-container #clinicProfileContainer h1,
+.main-container #clinicProfileContainer h2,
+.main-container #clinicProfileContainer h3 {
   text-align: center;
+}
+.main-container #appointmentsAccordion .appointment-jumbotron,
+.main-container #searchClinicsContainer .appointment-jumbotron,
+.main-container #createAppointmentsContainer .appointment-jumbotron,
+.main-container #userProfileContainer .appointment-jumbotron,
+.main-container #editAppointmentsContainer .appointment-jumbotron,
+.main-container #clinicScheduleContainer .appointment-jumbotron,
+.main-container #clinicLabTestContainer .appointment-jumbotron,
+.main-container #clinicAppointmentsContainer .appointment-jumbotron,
+.main-container #clinicProfileContainer .appointment-jumbotron {
+  margin-top: 20px;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  border: 1px solid grey;
+  background-color: #fff !important;
 }
 .main-container #clinicAccordion h2, .main-container #clinicAccordion h3 {
   text-align: center;
+}
+.main-container .accordion-button:focus {
+  background-color: #4741a6;
+  color: #f9ce69;
+}
+.main-container .accordion-button {
+  background-color: #9bbbfc;
+  color: #000;
+}
+.main-container .action-btn .btn {
+  margin: 2px;
+}
+.main-container .photo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main-container .photo-container .profile-photo {
+  height: 200px;
+  width: 200px;
+  max-width: 200px;
+  border: 1px solid grey;
+  border-radius: 15px;
+}
+.main-container .print-details .row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main-container .print-details .row img {
+  border: 1px solid grey;
+  height: 150px;
+  width: 150px;
+  border-radius: 5px;
 }
 
 body {

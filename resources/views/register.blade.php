@@ -25,6 +25,13 @@
           <div class="col-md-8">
 
             <div class="registration-container">
+              <div class="row">
+                @if(session()->has('error'))
+                    <div class="login-error login-message" id="login-error">
+                        <span><strong>Username</strong> already exists!</span>
+                    </div>
+                @endif 
+              </div>
               <!-- Nav tabs -->
               <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -110,25 +117,25 @@
                           <input type="text" class="form-control" id="contactNumber" name="contactNumber" required>
                         </div>
                         <div class="form-group">
-                          <label for="emailAddress"><span class="req">*</span> Email Address</label>
-                          <input type="text" class="form-control" id="emailAddress" name="emailAddress" required>
-                        </div>
-                        <div class="form-group">
                           <label for="passWord"><span class="req">*</span> Password</label>
                           <input type="password" class="form-control" id="passWord" name="passWord" required>
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                           <label for="mapLatitude">Map Latitude</label>
                           <input type="text" class="form-control" id="mapLatitude" name="mapLatitude">
                         </div>
                         <div class="form-group">
                           <label for="mapLongtitude">Map Longtitude</label>
                           <input type="text" class="form-control" id="mapLongtitude" name="mapLongtitude">
+                        </div> --}}
+                        <div class="form-group">
+                          <label for="emailAddress"><span class="req">*</span> Email Address</label>
+                          <input type="text" class="form-control" id="emailAddress" name="emailAddress" required>
                         </div>
                         <div class="form-group">
-                          <label for="completeAddress"><span class="req">*</span> Complete Address</label>
+                          <label for="completeAddress"><span class="req">*</span> Complete Address (Google Map Address)</label>
                           <input type="text" class="form-control" id="completeAddress" name="completeAddress">
                         </div>
                         <div class="form-group">

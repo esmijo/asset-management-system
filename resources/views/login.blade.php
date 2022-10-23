@@ -28,6 +28,19 @@
                 <img src="/images/logo.png" alt="">
               </div>
               <div class="row">
+                @if(session()->has('error'))
+                    <div class="login-error login-message" id="login-error">
+                        <span>Incorrect <strong>username</strong> or <strong>password.</strong></span>
+                    </div>
+                @endif 
+
+                @if(session()->has('signup'))
+                    <div class="register-success login-message" id="register-success">
+                        <span><strong>Success! </strong>Registration complete.</span>
+                    </div>
+                @endif 
+              </div>
+              <div class="row">
                 <div class="form-group">
                   <label for="userName">Username/Email</label>
                   <input type="text" class="form-control" id="userName" name="userName" aria-describedby="emailHelp" placeholder="Enter username or email">

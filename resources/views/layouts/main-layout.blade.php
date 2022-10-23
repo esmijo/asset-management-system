@@ -11,6 +11,8 @@
   <script src="/js/bootstrap.min.js"></script>
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script src="/js/axios.min.js"></script>
+  <script type="text/javascript" src="/js/jspdf.min.js"></script>
+  <script type="text/javascript" src="/js/html2canvas.js"></script>
   {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script> --}}
   <script src="/js/scripts.js"></script>
   <title>@yield('title')</title>
@@ -46,10 +48,10 @@
         <div class="col-md-0"></div>
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-12">
               @include('layouts.side-nav')
             </div>
-            <div class="col-md-9 content-container">
+            <div class="col-md-9 col-sm-12 content-container">
               @yield('content')
             </div>
           </div>

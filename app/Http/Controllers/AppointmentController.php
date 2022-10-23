@@ -12,7 +12,11 @@ class AppointmentController extends Controller
         $servicesOffered = array();
         for($x = 1; $x <= $r->servicesCount; $x++) {
             if($r->{'test-' . $x}) {
-                array_push($servicesOffered, $r->{'test-' . $x});
+                if($x == $r->servicesCount) {
+                    array_push($servicesOffered, $r->{'test-' . $x});
+                } else {
+                    array_push($servicesOffered, $r->{'test-' . $x} . ',');
+                }
             }
         }
 
@@ -25,7 +29,7 @@ class AppointmentController extends Controller
         $app->servicesAvailed = $servicesOffered;
         $app->totalAmount = $r->totalAmount;
         $app->save();
-        return redirect('/');
+        return redirect('/my-appointments');
     }
 
     public function cancel_appointment($id) {

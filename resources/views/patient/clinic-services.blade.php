@@ -11,7 +11,7 @@
       <div class="input-group mb-3">
         <input type="text" class="form-control" id="liveSearch" name="liveSearch" required>
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="liveSearchBtn">Search</button>
+          <button class="btn btn-success" type="button" id="liveSearchBtn">Search</button>
         </div>
       </div>
       <div class="accordion" id="clinicAccordion">

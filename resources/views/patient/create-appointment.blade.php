@@ -49,7 +49,7 @@
           </div>
   
           <div class="form-group">
-            <label for="appointmentTime">Appointment Time</label>
+            <label for="appointmentTime">Appointment Time: <span class="slot-qty">3</span> slots available. </label>
             <select class="form-control" id="appointmentTime" name="appointmentTime" required>
               <option value="">Choose a time slot...</option>
             </select>
@@ -67,7 +67,7 @@
             @foreach($tests as $key => $test)
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="{{ $test->id }}" name="test-{{ $test->id }}" data-price="{{ $test->price }}" value="{{ $test->testName }}">
-                <label class="form-check-label" for="{{ $test->id }}">{{ $test->testName }}</label>
+                <label class="form-check-label" for="{{ $test->id }}">{{ $test->testName }}, <strong>P{{ $test->price }}</strong></label>
               </div>
             @endforeach
           </div>

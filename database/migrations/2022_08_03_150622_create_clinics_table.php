@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('contactNumber');
             $table->string('emailAddress');
             $table->string('passWord');
+            $table->string('imagePath')->nullable();
             $table->timestamps();
         });
     }

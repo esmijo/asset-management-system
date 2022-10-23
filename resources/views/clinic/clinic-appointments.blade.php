@@ -5,10 +5,11 @@
 @endsection
 
 @section('content')
-<h1>Clinic Appointments</h1>
+  <div id="clinicAppointmentsContainer">
+    <h1>Clinic Appointments</h1>
 
 <div class="accordion" id="appointmentsAccordion">
-  @foreach($appointments as $key => $app)
+  @forelse($appointments as $key => $app)
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $key }}" aria-expanded="true" aria-controls="collapseOne">
@@ -77,5 +78,12 @@
       </div>
     </div>
   </div>
-  @endforeach
+  @empty
+  <div class="jumbotron appointment-jumbotron">
+    <h1 class="display-4">No appointments found.</h1>
+    <hr class="my-4">
+    <p class="lead">No appointments found at the moment.</p>
+  </div>
+  @endforelse
+  </div>
 @endsection

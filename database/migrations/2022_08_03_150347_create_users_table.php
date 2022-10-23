@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('userType')->nullable();
             $table->string('emailAddress')->unique();
             $table->string('contactNumber')->nullable();
+            $table->string('imagePath')->nullable();
             $table->timestamps();
         });
     }

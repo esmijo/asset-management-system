@@ -8,12 +8,22 @@ use App\Models\Clinic;
 use App\Models\Schedule;
 use App\Models\LabTest;
 use App\Models\User;
+use DB;
 
 class AxiosController extends Controller
 {
     public function axios_get_time_slot(Request $r) {
-        $NotAvailable = Appointment::where('clinicID', $r->clinicID)->where('appointmentDate', $r->appointmentDate)->get('appointmentTime');
-        $data = Schedule::where('clinicID', $r->clinicID)->where('isAvailable', 'Y')->whereNotIn('realTime', $NotAvailable)->get();
+
+        $takenSlot = DB::table('appointments')->selectRaw('appointmentTime')->groupBy('appointmentTime')->havingRaw('count(*) >= 3')->orderBy('appointmentTime', 'DESC')->get();
+
+        $stack = array();
+
+        foreach($takenSlot as $key => $t) {
+            array_push($stack, $t->appointmentTime);
+        }
+        
+        $data = Schedule::where('clinicID', $r->clinicID)->where('isAvailable', 'Y')->whereNotIn('realTime', $stack)->get();
+        
         return response()->json($data);
     }
 
@@ -53,7 +63,11 @@ class AxiosController extends Controller
     }
 
     public function axios_match_password(Request $r) {
-        $password = User::where('userName', session('userName'))->where('passWord', md5($r->passWord))->first();
+        if(session('userType') == 'Clinic') {
+            $password = Clinic::where('emailAddress', session('userName'))->where('passWord', md5($r->passWord))->first();
+        } else {
+            $password = User::where('userName', session('userName'))->where('passWord', md5($r->passWord))->first();
+        }
         if($password) {
             $data = 'true';
         } else {

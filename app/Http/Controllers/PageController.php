@@ -57,7 +57,8 @@ class PageController extends Controller
 
     public function my_appointments() {
         $appointments = Appointment::where('patientID', session('userID'))->orderByDesc('created_at')->get();
-        return view('patient.user-appointments', compact('appointments'));
+        $client = User::find(session('userID'));
+        return view('patient.user-appointments', compact('appointments', 'client'));
     }
 
     public function create_appointment($id) {
@@ -100,7 +101,7 @@ class PageController extends Controller
     }
 
     public function view_clinic_time_schedules() {
-        $var = Schedule::where('clinicID', session('userID'))->get();
+        $var = Schedule::where('clinicID', session('userID'))->orderBy('realTime')->get();
         return view('clinic.clinic-schedules', compact('var'));
     }
 

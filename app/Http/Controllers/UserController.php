@@ -9,19 +9,26 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function register(Request $r) {
-        $user = new User;
-        $user->firstName = $r->firstName;
-        $user->middleName = $r->middleName;
-        $user->lastName = $r->lastName;
-        $user->sex = $r->sex;
-        $user->birthday = $r->birthday;
-        $user->username = $r->username;
-        $user->password = md5($r->password);
-        $user->emailAddress = $r->email;
-        $user->contactNumber = $r->contactNumber;
-        $user->userType = 'Normal';
-        $user->save();
-        return redirect('/login');
+
+        $exists = User::where('username', $r->username)->first();
+        
+        if($exists) {
+            return redirect()->back()->with('error', 'Username already used. ');
+        } else {
+            $user = new User;
+            $user->firstName = $r->firstName;
+            $user->middleName = $r->middleName;
+            $user->lastName = $r->lastName;
+            $user->sex = $r->sex;
+            $user->birthday = $r->birthday;
+            $user->username = $r->username;
+            $user->password = md5($r->password);
+            $user->emailAddress = $r->email;
+            $user->contactNumber = $r->contactNumber;
+            $user->userType = 'Normal';
+            $user->save();
+            return redirect('/login')->with('signup', 'Login failed. ');
+        }
     }
 
     public function save_update(Request $r) {

@@ -89,7 +89,7 @@ $(document).ready( function () {
     $('#appointmentDate').on('change', function () {
       let cid = $('#clinicName').data('val')
       console.log($(this).val())
-      axios.get(`/axios_get_time_slot?ClinicID=${cid}&appointmentDate=${appointmentDate}`).then(res => {
+      axios.get(`/axios_get_time_slot?clinicID=${cid}&appointmentDate=${appointmentDate}`).then(res => {
         $('#appointmentTime').prop('disabled', false)
         $('#appointmentTime').empty()
         $('#appointmentTime').append('<option value="">Choose a time slot...</>')
@@ -114,6 +114,21 @@ $(document).ready( function () {
 
 
   if(location.pathname =='/my-profile') {
+    $('#update-profile-btn').prop('disabled', 'disabled')
+    $('#password').on('keyup', function() {
+      let password = $('#password').val()
+      axios.get(`/axios_match_password?passWord=${password}`).then(res => {
+        console.log(res.data)
+        if(res.data == 'true') {
+          $('#update-profile-btn').prop('disabled', false)
+        } else {
+          $('#update-profile-btn').prop('disabled', true)
+        }
+      })
+    })
+  }
+
+  if(location.pathname =='/clinic-profile') {
     $('#update-profile-btn').prop('disabled', 'disabled')
     $('#password').on('keyup', function() {
       let password = $('#password').val()
@@ -159,6 +174,7 @@ $(document).ready( function () {
                     '<div class="row">' +
                       '<h3>Clinic Details</h3>' +
                       '<table class="table">' +
+                      '<tr><th>Logo</th><th> : </th><td><img src="' + val.imagePath + '" alt="Clinic Logo" width="150" height="150" style="border: 1px solid grey; border-radius: 5px;"></td></tr>' +
                       '<tr><th>Address</th><th> : </th><td>' + val.completeAddress + '</td></tr>' +
                       '<tr><th>Contact Number</th><th> : </th><td>' + val.contactNumber + '</td></tr>' +
                       '<tr><th>Email Address</th><th> : </th><td>' + val.emailAddress + '</td></tr>' +
@@ -166,7 +182,7 @@ $(document).ready( function () {
                     '</div>' +
                     '<div class="row">' +
                     '<br><h3>Clinic Location</h3>' +
-                    '<iframe width="450" height="250" frameborder="0" style="border:0" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBpg1YYfO6E5bT2solb9CAYwv2WOf2Atik&q=' + val.mapLatitude + ', ' + val.mapLongtitude + '"></iframe>' +
+                    '<iframe width="450" height="250" frameborder="0" style="border:0" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBpg1YYfO6E5bT2solb9CAYwv2WOf2Atik&q=' + val.completeAddress  + '"></iframe>' +
                     '</div>' +
                   '</div>' +
 
@@ -207,6 +223,39 @@ $(document).ready( function () {
     //   })
     // })
   }
+  $('#downloadAppDetails').on('click', function() {
+    var clinic = $(this).data('clinic')
+    var date = $(this).data('date')
+    var time = $(this).data('time')
+    CreatePDFfromHTML(clinic, date, time)
+  })
+  
+  //START JSPDF
+  function CreatePDFfromHTML(clinic, date, slot) {
+    var filename = clinic + '-' + date + '-' + slot + '.pdf';
+    var HTML_Width = $(".print-details").width();
+    var HTML_Height = $(".print-details").height();
+    var top_left_margin = 15;
+    var PDF_Width = HTML_Width + (top_left_margin * 2);
+    var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+    var canvas_image_width = HTML_Width;
+    var canvas_image_height = HTML_Height;
+
+    var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+    html2canvas($(".print-details")[0]).then(function (canvas) {
+      var imgData = canvas.toDataURL("image/jpeg", 1.0);
+      var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+      pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+      for (var i = 1; i <= totalPDFPages; i++) { 
+          pdf.addPage(PDF_Width, PDF_Height);
+          pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+      }
+      pdf.save(filename);
+      $(".print-details").hide();
+    });
+  }
+  //END JSPDF
 
 })
 
