@@ -9,6 +9,12 @@ class LabTestController extends Controller
 {
     public function create(Request $r) {
         $s = new LabTest;
+        $s->clinicID = session('userID');
+        $s->isAvailable = 'Y';
+        $s->testName = $r->testName;
+        $s->price = $r->testPrice;
+        $s->save();
+        return redirect('/clinic-lab-tests');
     }
 
     public function update($id, Request $r) {

@@ -49,7 +49,7 @@ class AxiosController extends Controller
         } else {
             $result = Clinic::with('tests')->where('clinicName', 'like', '%'. $r->keyWord . '%')
             ->orWhereHas('tests',function ( $query ) use($r) {
-                $query->where('testName','like', '%'. $r->keyWord . '%');
+                $query->where('testName','like', '%'. $r->keyWord . '%')->where('isAvailable', 'Y');
             })->get();
         }
         $data = $result;
@@ -58,7 +58,7 @@ class AxiosController extends Controller
     }
 
     public function axios_live_search_tests(Request $r) {
-        $data = LabTest::where('clinicID', $r->clinicID)->get();
+        $data = LabTest::where('clinicID', $r->clinicID)->where('isAvailable', 'Y')->get();
         return response()->json($data);
     }
 

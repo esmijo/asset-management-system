@@ -64,16 +64,19 @@ class PageController extends Controller
     public function create_appointment($id) {
         $clinic = Clinic::find($id);
         $user = User::where('id', session('userID'))->first();
-        $tests = LabTest::where('clinicID', $id)->get();
+        $tests = LabTest::where('clinicID', $id)->where('isAvailable', 'Y')->get();
         return view('patient.create-appointment', compact('clinic', 'user', 'tests'));
     }
 
     public function edit_appointment($id) {
         $appointment = Appointment::find($id);
+        $availedTests = $appointment->servicesAvailed;
         $user = User::where('id', session('userID'))->first();
+        $notExistsTests = LabTest::where('clinicID', $appointment->clinicID)->whereNotIn('testName', $availedTests)->get();
         $tests = LabTest::where('clinicID', $appointment->clinicID)->get();
+        $existingTests = LabTest::where('clinicID', $appointment->clinicID)->whereIn('testName', $availedTests)->get();
         $clinic = Clinic::find( $appointment->clinicID);
-        return view('patient.edit-appointment', compact('appointment', 'user', 'tests', 'clinic'));
+        return view('patient.edit-appointment', compact('existingTests', 'notExistsTests', 'appointment', 'user', 'tests', 'clinic'));
     }
 
     public function my_profile() {
@@ -105,5 +108,12 @@ class PageController extends Controller
         return view('clinic.clinic-schedules', compact('var'));
     }
 
+    public function create_schedule() {
+        return view('clinic.create-schedule');
+    }
+
+    public function create_lab_test() {
+        return view('clinic.create-lab-test');
+    }
     //End of Clinic Pages
 }

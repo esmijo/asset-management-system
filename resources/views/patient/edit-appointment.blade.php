@@ -52,18 +52,40 @@
   
           <div class="form-group">
             <label for="totalAmount">Total Amount Due</label>
-              <input type="number" class="form-control" id="totalAmount" name="totalAmount" value="0" readonly>
+              <input type="number" class="form-control" id="totalAmount" name="totalAmount" value="{{ $appointment->totalAmount }}" readonly>
           </div>
   
         </div>
         <div class="col-md-6">
           <div class="form-group" id="servicesOffered">
             <label for="">Services Offered (Choose at least one.)</label>
-            @foreach($tests as $key => $test)
+            {{-- @foreach($existingTests as $key => $test)
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="{{ $test->id }}" name="test-{{ $test->id }}" data-price="{{ $test->price }}" value="{{ $test->testName }}">
+                <input class="form-check-input" type="checkbox" id="{{ $test->id }}" name="test-{{ $test->id }}" data-price="{{ $test->price }}" value="{{ $test->testName }}" checked="checked">
                 <label class="form-check-label" for="{{ $test->id }}">{{ $test->testName }}</label>
               </div>
+            @endforeach --}}
+            @foreach($tests as $key => $test)
+              @foreach($existingTests as $key => $et)
+                @if($test->testName == $et->testName)
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="{{ $test->id }}" name="test-{{ $test->id }}" data-price="{{ $test->price }}" value="{{ $test->testName }}" checked="checked">
+                    <label class="form-check-label" for="{{ $test->id }}">{{ $test->testName }}</label>
+                  </div>
+                @endif
+              @endforeach
+              @foreach($notExistsTests as $key => $et)
+                @if($test->testName == $et->testName)
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="{{ $test->id }}" name="test-{{ $test->id }}" data-price="{{ $test->price }}" value="{{ $test->testName }}">
+                    <label class="form-check-label" for="{{ $test->id }}">{{ $test->testName }}</label>
+                  </div>
+                @endif
+              @endforeach
+              {{-- <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="{{ $test->id }}" name="test-{{ $test->id }}" data-price="{{ $test->price }}" value="{{ $test->testName }}">
+                <label class="form-check-label" for="{{ $test->id }}">{{ $test->testName }}</label>
+              </div> --}}
             @endforeach
           </div>
         </div>

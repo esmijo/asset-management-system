@@ -5,26 +5,35 @@
 @endsection
 
 @section('content')
-<h1>Clinic Schedules</h1>
-
-<table class="table table-sm table-hover">
-  <thead>
-    <tr>
-      <th>Time Slot</th>
-      <th>Real Time</th>
-      <th>Is Available</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach($var as $key => $v)
-      <tr>
-        <td>{{ $v->timeSlotName }}</td>
-        <td>{{ $v->realTime }}</td>
-        <td>{{ $v->isAvailable }}</td>
-        <td><button class="btn btn-warning">Update</button></td>
-      </tr>
-    @endforeach
-  </tbody>
-</table>
+<div class="row">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        
+        <form action="/create-lab-test" method="post" class="create-new-form">
+          {{ csrf_field() }}
+      <h3>Create Laboratory Test</h3>
+        <div class="row">
+          <div class="form-group">
+            <label for="testName"><span class="req">* </span>Laborary Test Name</label>
+            <input type="text" class="form-control" id="testName" name="testName" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label for="testPrice"><span class="req">* </span>Laboratory Test Price</label>
+            <input type="number" class="form-control" id="testPrice" name="testPrice" required>
+          </div>
+        </div>
+        <input type="hidden" name="clinicID" value="">
+        <div class="row">
+          <div class="form-group">
+            <button class="btn btn-success w-100">Submit</button>
+          </div>
+        </div>
+        </form>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+</div>
 @endsection

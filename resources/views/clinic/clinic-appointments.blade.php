@@ -13,7 +13,7 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $key }}" aria-expanded="true" aria-controls="collapseOne">
-        <strong>{{ $app->appointmentDate }}, {{ $app->appointmentTime }}, {{ $app->clinic->clinicName }}</strong>
+        <strong>{{ $app->appointmentDate }}, {{ $app->appointmentTime }}, {{ $app->patient->FullName }}</strong>
       </button>
     </h2>
     <div id="collapse-{{ $key }}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#appointmentsAccordion">
@@ -22,7 +22,7 @@
       {{-- @foreach($app->servicesAvailed as $services)
         {{ $services->filename }}
       @endforeach --}}
-        <table class="table">
+        {{-- <table class="table">
           <thead>
             <tr>
               <th>Clinic Name</th>
@@ -74,7 +74,84 @@
               </td>
             </tr>
           </tbody>
-        </table>
+        </table> --}}
+
+        <h2>Appointment Details</h2>
+        <hr>
+
+        <div class="print-details">
+          <table class="table table-sm table-hover">
+            <tr>
+              <td>Patient Name:</td>
+              <td>:</td>
+              <td><strong>{{ $app->patient->FullName }}</strong></td>
+            </tr>
+            <tr>
+              <td>Appointment Date:</td>
+              <td>:</td>
+              <td><strong>{{ $app->appointmentDate }}</strong></td>
+            </tr>
+            <tr>
+              <td>Appointment Time:</td>
+              <td>:</td>
+              <td><strong>{{ $app->appointmentTime }}</strong></td>
+            </tr>
+            <tr>
+              <td>Tests Availed:</td>
+              <td>:</td>
+              <td>
+                @foreach($app->servicesAvailed as $key => $serv)
+                  @if($loop->last)
+                    <strong>{{ $serv }}.</strong>
+                  @else
+                    <strong>{{ $serv }},</strong>
+                  @endif
+                @endforeach
+              </td>
+            </tr>
+            <tr>
+              <td>Total Bill:</td>
+              <td>:</td>
+              <td><strong>{{ $app->totalAmount }}</strong></td>
+            </tr>
+          </table>
+        </div>
+        {{-- Buttons --}}
+        
+        <form action="/complete-appointment/{{ $app->id }}" method="post">
+          {{ csrf_field() }}
+          <div class="btn-group d-flex" role="group" aria-label="...">
+            @if($app->status == 'Cancelled' || $app->status == 'Completed')
+              <button class="btn btn-dark  w-100">No Actions Allowed</button>
+            @else 
+              <button class="btn btn-success">Complete</button>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button>
+            @endif
+          </div>
+          {{-- Cancel Modal --}}
+          <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="cancelModalLabel">Appointment Cancellation</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <strong>Are you sure you want to cancel your appointment?</strong>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <form action="/cancel-appointment/{{ $app->id }}" method="post">
+                    {{ csrf_field() }}
+                    <button class="btn btn-danger">Cancel Appointment</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{-- End of Cancel Modal --}}
+        </form>
+        {{-- End Buttons --}}
       </div>
     </div>
   </div>
@@ -85,5 +162,5 @@
     <p class="lead">No appointments found at the moment.</p>
   </div>
   @endforelse
-  </div>
+</div>
 @endsection

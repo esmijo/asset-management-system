@@ -9,5 +9,11 @@ class User extends Model
 {
     use HasFactory;
 
+    protected $appends = ['FullName'];
+
     protected $guarded = ['id'];
+
+    public function getFullNameAttribute() {
+        return $this->firstName . ' ' . $this->middleName . ' ' . $this->lastName;
+    }
 }

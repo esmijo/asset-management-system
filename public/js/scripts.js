@@ -27,7 +27,7 @@ $(document).ready( function () {
         $('#create-appointment-btn').prop('disabled', true)
       }
       console.log(total)
-      $('#totalAmount').val(total)
+      $('#totalAmount').val(parseFloat(total).toFixed(2))
     })
     //   })
     // })
@@ -83,7 +83,7 @@ $(document).ready( function () {
         $('#create-appointment-btn').prop('disabled', true)
       }
       console.log(total)
-      $('#totalAmount').val(total)
+      $('#totalAmount').val(parseFloat(total).toFixed(2))
     })
 
     $('#appointmentDate').on('change', function () {

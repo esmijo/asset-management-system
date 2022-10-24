@@ -16,6 +16,6 @@ class Clinic extends Model
     }
 
     public function tests() {
-        return $this->hasMany(LabTest::class, 'clinicID', 'id');
+        return $this->hasMany(LabTest::class, 'clinicID', 'id')->where('isAvailable', 'Y');
     }
 }

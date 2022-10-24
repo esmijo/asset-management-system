@@ -61,11 +61,12 @@ Route::middleware('isLoggedIn')->group(function() {
         Route::get('/clinic-lab-tests', [PageController::class, 'view_clinic_lab_tests']);
         Route::get('/clinic-time-schedules', [PageController::class, 'view_clinic_time_schedules']);
         Route::post('/complete-appointment/{id}', [AppointmentController::class, 'complete_appointment']);
-        Route::post('/create-schedule/{id}', [ScheduleController::class, 'create']);
+        Route::get('/create-schedule', [PageController::class, 'create_schedule']);
+        Route::post('/create-schedule', [ScheduleController::class, 'create']);
         Route::post('/update-schedule/{id}', [ScheduleController::class, 'update']);
         Route::post('/delete-schedule/{id}', [ScheduleController::class, 'delete']);
-
-        Route::post('/create-lab-test/{id}', [LabTestController::class, 'create']);
+        Route::get('/create-lab-test', [PageController::class, 'create_lab_test']);
+        Route::post('/create-lab-test', [LabTestController::class, 'create']);
         Route::post('/update-lab-test/{id}', [LabTestController::class, 'update']);
         Route::post('/delete-lab-test/{id}', [LabTestController::class, 'delete']);
     });

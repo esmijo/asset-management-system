@@ -6,8 +6,12 @@
 
 @section('content')
   <div id="clinicLabTestContainer">
-    <h1>Clinic Appointments</h1>
-
+    <h1>Clinic Laboratory Tests</h1>
+    <hr>
+    <div class="row">
+      <a href="/create-lab-test" class="btn btn-success add-new-btn">Add New Laboratory Test</a>
+    </div>
+    <hr>
     <table class="table table-sm table-hover">
       <thead>
         <tr>
