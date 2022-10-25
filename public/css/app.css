@@ -65,8 +65,11 @@ form.login-form .register-success strong {
 .main-container #admin-side-nav {
   background-color: #9bbbfc !important;
   margin-top: 1vh;
-  height: 98vh !important;
+  height: 98vh;
   padding: 0 5px 0 5px;
+}
+.main-container #admin-side-nav .nav-icon {
+  display: none;
 }
 .main-container .nav-link {
   font-weight: bold;

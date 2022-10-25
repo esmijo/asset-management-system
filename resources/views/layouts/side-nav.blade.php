@@ -1,7 +1,12 @@
 <div class="row" role="tabpanel">
   <div class="col-md-12">
-    <div class="d-flex flex-column flex-shrink-0" id="admin-side-nav">
+    <div class="d-flex flex-column flex-shrink-0 admin-side-nav" id="admin-side-nav">
       <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="javascript:void(0);" class="nav-link link-dark nav-icon">
+            <i class="fa-solid fa-bars"></i>
+          </a>
+        </li>
         @if(session('userType') == 'Admin')
           <li class="nav-item">
             <a href="/admin-dashboard" class="nav-link link-dark">Dashboard</a>

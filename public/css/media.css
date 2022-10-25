@@ -1,0 +1,40 @@
+@media screen and (max-width: 767px) {
+
+  div#admin-side-nav {
+    height: auto !important;
+    overflow:auto;
+  }
+
+  div#admin-side-nav a {
+    display: none;
+  }
+
+  .nav-icon {
+    display: block !important;
+    text-align: right;
+  }
+
+/* 
+  #admin-side-nav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right !important;
+  } */
+  div#admin-side-nav {
+    
+  }
+
+  #admin-side-nav.responsive .nav-icon {
+    text-align: right !important;
+  }
+
+  div#admin-side-nav.responsive a{
+    display: block !important;
+    text-align: left;
+  }
+
+  .nav-link {
+    margin: 0 !important;
+  }
+}

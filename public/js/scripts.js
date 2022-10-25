@@ -257,6 +257,9 @@ $(document).ready( function () {
   }
   //END JSPDF
 
+  $('.nav-icon').on('click', function() {
+   $('#admin-side-nav').toggleClass('responsive');
+  })
 })
 
 
