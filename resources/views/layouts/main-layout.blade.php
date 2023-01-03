@@ -15,6 +15,8 @@
   <script src="/js/axios.min.js"></script>
   <script type="text/javascript" src="/js/jspdf.min.js"></script>
   <script type="text/javascript" src="/js/html2canvas.js"></script>
+  <script type="text/javascript" src="/js/chart.min.js"></script>
+  <script type="text/javascript" src="/js/reports.js"></script>
   {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script> --}}
   <script src="/js/scripts.js"></script>
   <title>@yield('title')</title>

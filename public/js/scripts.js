@@ -145,6 +145,7 @@ $(document).ready( function () {
 
   if(location.pathname == '/clinics-and-services') {
     console.log('here')
+    liveSearch() // load search results on page.ready
     $('#liveSearch').keyup(liveSearch)
 
     $('#liveSearchBtn').click(liveSearch)

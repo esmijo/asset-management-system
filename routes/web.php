@@ -7,6 +7,7 @@ use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\LabTestController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\UserController;
 
@@ -44,6 +45,8 @@ Route::middleware('isLoggedIn')->group(function() {
         Route::get('/my-profile', [PageController::class, 'my_profile']);
         Route::get('/edit-appointment/{id}', [PageController::class, 'edit_appointment']);
         Route::post('/edit-appointment/{id}', [AppointmentController::class, 'edit_appointment']);
+        Route::get('/verify-email/patient/{username}', [PageController::class, 'verify_patient']);
+        Route::post('/verify-email/patient/{username}', [UserController::class, 'verify_patient']);
     });
 
     //AXIOS Routes
@@ -69,6 +72,8 @@ Route::middleware('isLoggedIn')->group(function() {
         Route::post('/create-lab-test', [LabTestController::class, 'create']);
         Route::post('/update-lab-test/{id}', [LabTestController::class, 'update']);
         Route::post('/delete-lab-test/{id}', [LabTestController::class, 'delete']);
+        Route::get('/verify-email/clinic/{email}', [PageController::class, 'verify_clinic']);
+        Route::post('/verify-email/clinic/{email}', [ClinicController::class, 'verify_clinic']);
     });
 
     //ADMIN PAGES
@@ -76,7 +81,7 @@ Route::middleware('isLoggedIn')->group(function() {
         Route::get('/admin-dashboard', [PageController::class, 'administration']);
         Route::get('/view-clinics', [PageController::class, 'view_clinics']);
         Route::get('/update-clinic/{id}', [PageController::class, 'update_clinic']);
-        
+        Route::get('/generate_report', [ReportController::class, 'generate_report']);
         Route::get('/view-patients', [PageController::class, 'view_patients']);
         Route::get('/update-patient/{id}', [PageController::class, 'update_patient']);
     });

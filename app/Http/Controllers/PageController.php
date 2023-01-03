@@ -25,7 +25,9 @@ class PageController extends Controller
 
     //Admin Pages
     public function administration() {
-        return view('admin.admin-dashboard');
+        $tests = LabTest::all();
+        $patients = User::where('userType', '!=', 'Admin')->get();
+        return view('admin.admin-dashboard', compact('tests', 'patients'));
     }
 
     public function view_clinics() {
@@ -52,7 +54,8 @@ class PageController extends Controller
 
     //Patient Pages
     public function search_clinic_services() {
-        return view('patient.clinic-services');
+        $clinics = Clinic::all();
+        return view('patient.clinic-services', compact('clinics'));
     }
 
     public function my_appointments() {
@@ -82,6 +85,11 @@ class PageController extends Controller
     public function my_profile() {
         $patient = User::where('userName', session('userName'))->first();
         return view('patient.user-profile', compact('patient'));
+    }
+
+    public function verify_patient($username) {
+        $patient = User::where('email', $username)->first();
+        return view('patient.verify-email', compact('patient'));
     }
 
     //End of Patient Pages
@@ -114,6 +122,11 @@ class PageController extends Controller
 
     public function create_lab_test() {
         return view('clinic.create-lab-test');
+    }
+
+    public function verify_clinic($email) {
+        $clinic = Clinic::where('emailAddress', $email)->first();
+        return view('clinic.verify-email', compact('clinic'));
     }
     //End of Clinic Pages
 }

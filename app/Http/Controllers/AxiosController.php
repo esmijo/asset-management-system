@@ -27,16 +27,6 @@ class AxiosController extends Controller
         return response()->json($data);
     }
 
-    // public function axios_get_available_time(Request $r) {
-    //     $appCheck = Appointment::where('clinicID', 1)->where('appointmentTime', $r->appTime)->first();
-    //     if($appCheck) {
-    //         $data = 'taken';
-    //     } else {
-    //         $data = 'available';
-    //     }
-    //     return response()->json($data);
-    // }
-
     public function axios_get_lab_tests(Request $r) {
         $data = LabTest::where('clinicID', $r->ClinicID)->where('isAvailable', 'Y')->get();
         
@@ -45,9 +35,10 @@ class AxiosController extends Controller
 
     public function axios_live_search(Request $r) {
         if($r->keyWord == '') {
-            $result = '';
+            $result = Clinic::with('tests')->get();
         } else {
             $result = Clinic::with('tests')->where('clinicName', 'like', '%'. $r->keyWord . '%')
+            ->orWhere('completeAddress', 'like', '%' . $r->keyWord . '%')
             ->orWhereHas('tests',function ( $query ) use($r) {
                 $query->where('testName','like', '%'. $r->keyWord . '%')->where('isAvailable', 'Y');
             })->get();

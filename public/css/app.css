@@ -63,7 +63,7 @@ form.login-form .register-success strong {
   margin-top: 20px;
 }
 .main-container #admin-side-nav {
-  background-color: #9bbbfc !important;
+  background-color: #a7c3fa !important;
   margin-top: 1vh;
   height: 98vh;
   padding: 0 5px 0 5px;
@@ -76,8 +76,8 @@ form.login-form .register-success strong {
   margin: 5px;
 }
 .main-container .nav-link:hover {
-  background-color: #4741a6;
-  color: #f9ce69 !important;
+  background-color: #41a652;
+  color: #153510 !important;
 }
 .main-container .dropdown-nav {
   cursor: pointer;
@@ -94,7 +94,7 @@ form.login-form .register-success strong {
 }
 .main-container #clinics-collapse li a:hover,
 .main-container #clients-collapse li a:hover {
-  background-color: #00258a;
+  background-color: #0b35a7;
   color: #fff !important;
   font-weight: bold;
 }
@@ -159,11 +159,11 @@ form.login-form .register-success strong {
   text-align: center;
 }
 .main-container .accordion-button:focus {
-  background-color: #4741a6;
-  color: #f9ce69;
+  background-color: #41a652;
+  color: #153510;
 }
 .main-container .accordion-button {
-  background-color: #9bbbfc;
+  background-color: #a7c3fa;
   color: #000;
 }
 .main-container .action-btn .btn {
