@@ -9,7 +9,7 @@
     <form action="/create-appointment/{{ $clinic->id }}" class="create-appointment-form" method="post">
       {{ csrf_field() }}
       <h1>CREATE NEW APPOINTMENT</h1>
-      <input type="text" name="servicesCount" value="{{ count($tests) }}" id="">
+      <input type="hidden" name="servicesCount" value="{{ count($tests) }}" id="">
       <input type="hidden" name="userID" value="{{ $user->id }}">
       <hr>
       <div class="row">
