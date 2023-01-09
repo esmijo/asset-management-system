@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/app.css">
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
   <title>Welcome!</title>
 </head>
 <body>
@@ -38,7 +39,27 @@
                     <div class="register-success login-message" id="register-success">
                         <span><strong>Success! </strong>Registration complete.</span>
                     </div>
-                @endif 
+                @endif
+
+                {{-- MODAL --}}
+                <div class="modal fade" id="register-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Registration Success!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Thank you for signup-up. Please close this pop-up to login.
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {{-- MODAL --}}
+
               </div>
               <div class="row">
                 <div class="form-group">
@@ -49,14 +70,15 @@
                   <label for="passWord">Password</label>
                   <input type="password" class="form-control" id="passWord" name="passWord" placeholder="Enter password">
                 </div>
-                <div class="form-group">
+                <input type="hidden" class="form-control" id="userType" name="userType">
+                {{-- <div class="form-group">
                   <label for="userType">User Type</label>
                   <select class="form-control" id="userType" name="userType" required>
                     <option value=""></option>
                     <option value="Person">Person</option>
                     <option value="Clinic">Clinic</option>
                   </select>
-                </div>
+                </div> --}}
                 <div class="form-group link-register">
                   <span>No account yet? <a href="/register">Register here.</a></span>
                 </div>

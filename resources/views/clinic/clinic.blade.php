@@ -8,7 +8,24 @@
 <div id="clinicProfileContainer">
   <h2>Clinic Profile</h2>
   <div class="photo-container">
-    <img src="/images/logo.png" class="profile-photo" alt="">
+    <img src="{{ $var->imagePath }}" class="profile-photo" alt="">
+    <br>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+        <form action="/clinic-profile" method="post" enctype="multipart/form-data">
+          {{ csrf_field() }}
+          <div class="input-group">
+            <input type="hidden" name="clinic_id" value="{{ $var->id }}">
+            <input type="file" class="form-control" id="image" name="image" required>
+            <div class="input-group-append">
+              <button class="btn btn-success" type="submit" id="update_btn" name="update_btn">Update</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
   </div>
   <hr>
   <form class="registration-form" action="/save-clinic" method="post" id="form-clinic">

@@ -27,6 +27,7 @@ class ClinicController extends Controller
             $clinic->contactNumber = $r->contactNumber;
             $clinic->emailAddress = $r->emailAddress;
             $clinic->passWord = md5($r->passWord);
+            $clinic->imagePath = '/images/logo.png';
             $clinic->save();
 
             $timeSlots = [
@@ -116,5 +117,18 @@ class ClinicController extends Controller
         $clinic->verified = 'Verified';
         $clinic->save();
         return redirect()->back();
+    }
+
+    public function clinic_photo(Request $r) {
+        $clinic = Clinic::where('id', $r->clinic_id)->first();
+        if($r->hasFile('image')) {
+            $extension = $r->file('image')->extension();
+            
+            $filename = $clinic->emailAddress . '.' . $extension;
+            $clinic->imagePath = '/images/clinic/'. $clinic->id . '/' . $filename;
+            $r->image->move(public_path('images/clinic/' . $clinic->id . '/'), $filename);
+        }
+        $clinic->save();
+        return redirect('/clinic-profile');
     }
 }

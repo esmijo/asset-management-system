@@ -9,7 +9,7 @@
     <form action="/create-appointment/{{ $clinic->id }}" class="create-appointment-form" method="post">
       {{ csrf_field() }}
       <h1>CREATE NEW APPOINTMENT</h1>
-      <input type="hidden" name="servicesCount" value="{{ count($tests) }}" id="">
+      <input type="text" name="servicesCount" value="{{ count($tests) }}" id="">
       <input type="hidden" name="userID" value="{{ $user->id }}">
       <hr>
       <div class="row">
@@ -66,8 +66,8 @@
             <label for="">Services Offered (Choose at least one.)</label>
             @foreach($tests as $key => $test)
               <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="{{ $test->id }}" name="test-{{ $test->id }}" data-price="{{ $test->price }}" value="{{ $test->testName }}">
-                <label class="form-check-label" for="{{ $test->id }}">{{ $test->testName }}, <strong>P{{ $test->price }}</strong></label>
+                <input class="form-check-input" type="checkbox" id="{{ $test->id }}" name="test-{{ $key + 1 }}" data-price="{{ $test->price }}" value="{{ $test->testName }}">
+                <label class="form-check-label" for="{{ $key + 1 }}">{{ $test->testName }}, <strong>P{{ $test->price }}</strong></label>
               </div>
             @endforeach
           </div>

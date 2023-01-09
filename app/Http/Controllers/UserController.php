@@ -28,6 +28,7 @@ class UserController extends Controller
             $user->emailAddress = $r->email;
             $user->contactNumber = $r->contactNumber;
             $user->userType = 'Normal';
+            $user->imagePath = '/images/logo.png';
             $user->save();
 
             $fullName = $r->firstName . ' ' . $r->middleName . ' ' . $r->lastName;
@@ -72,5 +73,19 @@ class UserController extends Controller
         $user->verified = 'Verified';
         $user->save();
         return redirect()->back();
+    }
+
+    public function user_photo(Request $r) {
+        $user = User::where('id', $r->patient_id)->first();
+        if($r->hasFile('image')) {
+            $extension = $r->file('image')->extension();
+            
+            $filename = $user->userName . '.' . $extension;
+            $user->imagePath = '/images/user/'. $user->id . '/' . $filename;
+            $r->image->move(public_path('images/user/' . $user->id . '/'), $filename);
+        }
+        // return $user;
+        $user->save();
+        return redirect('/my-profile');
     }
 }

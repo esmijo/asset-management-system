@@ -99,7 +99,7 @@
             <tr>
               <td>Tests Availed:</td>
               <td>:</td>
-              <td>
+              <td>{{ $app }}
                 @foreach($app->servicesAvailed as $key => $serv)
                   @if($loop->last)
                     <strong>{{ $serv }}.</strong>

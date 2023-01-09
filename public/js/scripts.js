@@ -2,7 +2,6 @@ $(document).ready( function () {
   console.log(1)
   $('.list-table').DataTable()
 
-
   if(location.pathname.indexOf('/create-appointment') == 0) {
     // $('#appointmentDate').prop('disabled', true)
     $('#appointmentTime').prop('disabled', true)
@@ -261,6 +260,8 @@ $(document).ready( function () {
   $('.nav-icon').on('click', function() {
    $('#admin-side-nav').toggleClass('responsive');
   })
+
+  
 })
 
 

@@ -47,6 +47,7 @@ Route::middleware('isLoggedIn')->group(function() {
         Route::post('/edit-appointment/{id}', [AppointmentController::class, 'edit_appointment']);
         Route::get('/verify-email/patient/{username}', [PageController::class, 'verify_patient']);
         Route::post('/verify-email/patient/{username}', [UserController::class, 'verify_patient']);
+        Route::post('/my-profile', [UserController::class, 'user_photo']);
     });
 
     //AXIOS Routes
@@ -74,6 +75,7 @@ Route::middleware('isLoggedIn')->group(function() {
         Route::post('/delete-lab-test/{id}', [LabTestController::class, 'delete']);
         Route::get('/verify-email/clinic/{email}', [PageController::class, 'verify_clinic']);
         Route::post('/verify-email/clinic/{email}', [ClinicController::class, 'verify_clinic']);
+        Route::post('/clinic-profile', [ClinicController::class, 'clinic_photo']);
     });
 
     //ADMIN PAGES

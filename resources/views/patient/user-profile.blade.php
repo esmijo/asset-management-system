@@ -8,7 +8,24 @@ View Clinics
  <div id="userProfileContainer">
   <h2>User Profile</h2>
   <div class="photo-container">
-    <img src="/images/logo.png" class="profile-photo" alt="">
+    <img src="{{ $patient->imagePath }}" class="profile-photo" alt="">
+    <br>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+        <form action="/my-profile" method="post" enctype="multipart/form-data">
+          {{ csrf_field() }}
+          <div class="input-group">
+            <input type="hidden" name="patient_id" value="{{ $patient->id }}">
+            <input type="file" class="form-control" id="image" name="image" required>
+            <div class="input-group-append">
+              <button class="btn btn-success" type="submit" id="update_btn" name="update_btn">Update</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
   </div>
   <hr>
   <div class="row">
