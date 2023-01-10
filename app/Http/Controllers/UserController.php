@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function register(Request $r) {
 
-        $exists = User::where('username', $r->username)->first();
+        $exists = User::where('userName', $r->username)->first();
         
         if($exists) {
             return redirect()->back()->with('error', 'Username already used. ');
@@ -23,8 +23,8 @@ class UserController extends Controller
             $user->lastName = $r->lastName;
             $user->sex = $r->sex;
             $user->birthday = $r->birthday;
-            $user->username = $r->username;
-            $user->password = md5($r->password);
+            $user->userName = $r->username;
+            $user->passWord = md5($r->password);
             $user->emailAddress = $r->email;
             $user->contactNumber = $r->contactNumber;
             $user->userType = 'Normal';
@@ -52,8 +52,8 @@ class UserController extends Controller
         $user->lastName = $r->lastName;
         $user->sex = $r->sex;
         $user->birthday = $r->birthday;
-        $user->username = $r->username;
-        $user->password = md5($r->passWord);
+        $user->userName = $r->username;
+        $user->passWord = md5($r->passWord);
         $user->emailAddress = $r->email;
         $user->contactNumber = $r->contactNumber;
         $user->userType = 'Normal';
