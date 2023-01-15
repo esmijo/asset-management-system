@@ -53,7 +53,9 @@ class UserController extends Controller
         $user->sex = $r->sex;
         $user->birthday = $r->birthday;
         $user->userName = $r->username;
-        $user->passWord = md5($r->passWord);
+        if($r->passWord != NULL) {
+            $user->passWord = md5($r->passWord);
+        }
         $user->emailAddress = $r->email;
         $user->contactNumber = $r->contactNumber;
         $user->userType = 'Normal';

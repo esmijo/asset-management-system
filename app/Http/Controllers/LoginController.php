@@ -33,8 +33,10 @@ class LoginController extends Controller
                 
                 if($r->userType == 'Clinic') {
                     session()->put('userName', $user->emailAddress);
+                    session()->put('fullName', $user->clinicName);
                 } else {
                     session()->put('userName', $user->userName);
+                    session()->put('fullName', $user->FullName);
                 }
                 session()->put('userID', $user->id);
                 session()->put('userType', $userType);

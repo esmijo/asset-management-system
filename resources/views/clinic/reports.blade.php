@@ -1,22 +1,24 @@
 @extends('layouts.main-layout')
 
 @section('title')
-Admin Panel
+Reports Management
 @endsection
 
 @section('content')
   <form action="">
     {{ csrf_field() }}
+    <input type="hidden" name="clinicID" value="{{ $clinic->id }}" id="clinicID">
     <div class="container">
       <div class="report-container row">
         <hr>
         <div class="filter-container-left col-sm-6">
           <div class="form-group">
-            <label for="firstName">Patient Gender</label>
-            <select class="form-control" id="gender" name="gender" value="">
+            <label for="firstName">Tests Availed</label>
+            <select class="form-control" id="testsAvailed" name="testsAvailed" value="">
               <option value="All">All</option>
-              <option value="M">Male</option>
-              <option value="F">Female</option>
+              @foreach($tests as $key => $test)
+                <option value="{{ $test->testName}}">{{ $test->testName }}</option>
+              @endforeach
             </select>
           </div>
           <br>
@@ -34,11 +36,11 @@ Admin Panel
         <div class="filter-container-right col-sm-6">
           <div class="form-group">
             <label for="firstName">Chart Type</label>
-            <select class="form-control" id="chart" name="chart" value="">  
+            <select class="form-control" id="chart" name="chart" value="">
+              <option value="bar">Bar</option>
               <option value="doughnut">Doughnut</option>
               <option value="pie">Pie</option>
               <option value="line">Line</option>
-              <option value="bar">Bar</option>
               <option value="bubble">Bubble</option>
               <option value="radar">Radar</option>
               <option value="polarArea">Polar Area</option>

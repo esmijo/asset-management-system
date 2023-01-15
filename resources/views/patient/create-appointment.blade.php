@@ -59,13 +59,18 @@
             <label for="totalAmount">Total Amount Due</label>
               <input type="number" class="form-control" id="totalAmount" name="totalAmount" value="0" readonly>
           </div>
+
+          <div class="form-group">
+            <label for="totalAmount">Set Appointment For Someone: (Optional)</label>
+              <input type="text" class="form-control" id="totalAmount" name="appointmentFor">
+          </div>
   
         </div>
         <div class="col-md-6">
           <div class="form-group" id="servicesOffered">
             <label for="">Services Offered (Choose at least one.)</label>
             @foreach($tests as $key => $test)
-              <div class="form-check form-switch">
+              <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="{{ $test->id }}" name="test-{{ $key + 1 }}" data-price="{{ $test->price }}" value="{{ $test->testName }}">
                 <label class="form-check-label" for="{{ $key + 1 }}">{{ $test->testName }}, <strong>P{{ $test->price }}</strong></label>
               </div>
@@ -74,7 +79,7 @@
         </div>
         <hr>
         <div class="form-group">
-          <input type="submit" class="btn btn-success" id="create-appointment-btn" value="Submit">
+          <input type="submit" class="btn btn-primary" id="create-appointment-btn" value="Submit">
         </div>
       </div>
   

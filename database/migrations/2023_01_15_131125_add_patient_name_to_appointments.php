@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('clinics', function (Blueprint $table) {
-            $table->string('verified')->nullable();
+        Schema::table('appointments', function (Blueprint $table) {
+            $table->string('patientName')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('clinics', function (Blueprint $table) {
-            $table->string('verified')->nullable();
+        Schema::table('appointments', function (Blueprint $table) {
+            //
         });
     }
 };

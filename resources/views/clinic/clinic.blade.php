@@ -19,7 +19,7 @@
             <input type="hidden" name="clinic_id" value="{{ $var->id }}">
             <input type="file" class="form-control" id="image" name="image" required>
             <div class="input-group-append">
-              <button class="btn btn-success" type="submit" id="update_btn" name="update_btn">Update</button>
+              <button class="btn btn-primary" type="submit" id="update_btn" name="update_btn">Update</button>
             </div>
           </div>
         </form>
@@ -58,7 +58,7 @@
         </div>
         <div class="form-group">
           <label for="">&nbsp;</label>
-          <input class="form-control btn btn-success" id="update-profile-btn" type="submit" value="Update Details">
+          <input class="form-control btn btn-primary" id="update-profile-btn" type="submit" value="Update Details">
         </div>
       </div>
     </div>

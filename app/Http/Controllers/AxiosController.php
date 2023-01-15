@@ -66,4 +66,14 @@ class AxiosController extends Controller
         }
         return response()->json($data);
     }
+
+    public function axios_get_patient_appointments(Request $r) {
+        $data = Appointment::with('clinic')->with('patient')->where('patientID', $r->patientID)->get();
+        return response()->json($data);
+    }
+
+    public function axios_get_clinic_appointments(Request $r) {
+        $data = Appointment::with('patient')->where('clinicID', $r->clinicID)->get();
+        return response()->json($data);
+    }
 }

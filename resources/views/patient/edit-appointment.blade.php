@@ -54,6 +54,11 @@
             <label for="totalAmount">Total Amount Due</label>
               <input type="number" class="form-control" id="totalAmount" name="totalAmount" value="{{ $appointment->totalAmount }}" readonly>
           </div>
+
+          <div class="form-group">
+            <label for="totalAmount">Set Appointment For Someone: (Optional)</label>
+              <input type="text" class="form-control" id="totalAmount" name="appointmentFor" value="{{ $appointment->patientName }}">
+          </div>
   
         </div>
         <div class="col-md-6">
@@ -68,7 +73,7 @@
             @foreach($tests as $key => $test)
               @foreach($existingTests as $key => $et)
                 @if($test->testName == $et->testName)
-                  <div class="form-check form-switch">
+                  <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="{{ $test->id }}" name="test-{{ $test->id }}" data-price="{{ $test->price }}" value="{{ $test->testName }}" checked="checked">
                     <label class="form-check-label" for="{{ $test->id }}">{{ $test->testName }}</label>
                   </div>
@@ -76,7 +81,7 @@
               @endforeach
               @foreach($notExistsTests as $key => $et)
                 @if($test->testName == $et->testName)
-                  <div class="form-check form-switch">
+                  <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="{{ $test->id }}" name="test-{{ $test->id }}" data-price="{{ $test->price }}" value="{{ $test->testName }}">
                     <label class="form-check-label" for="{{ $test->id }}">{{ $test->testName }}</label>
                   </div>
@@ -91,7 +96,7 @@
         </div>
         <hr>
         <div class="form-group">
-          <input type="submit" class="btn btn-success" id="create-appointment-btn" value="Update Appointment Details">
+          <input type="submit" class="btn btn-primary" id="create-appointment-btn" value="Update Appointment Details">
         </div>
       </div>
   

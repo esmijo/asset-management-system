@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use App\Models\User;
 
 class AppointmentController extends Controller
 {
@@ -28,6 +29,13 @@ class AppointmentController extends Controller
         $app->status = 'Pending';
         $app->servicesAvailed = $servicesOffered;
         $app->totalAmount = $r->totalAmount;
+        if($r->appointmentFor == NULL) {
+            $patient = User::find($r->userID);
+            $app->patientName = $patient->firstName . ' ' . $patient->firstName . ' ' . $patient->firstName;
+        } else {
+            $app->patientName = $r->appointmentFor;
+        }
+
         $app->save();
         return redirect('/my-appointments');
     }
@@ -68,6 +76,14 @@ class AppointmentController extends Controller
         $app->status = 'Pending';
         $app->servicesAvailed = $servicesOffered;
         $app->totalAmount = $r->totalAmount;
+
+        if($r->appointmentFor == NULL) {
+            $patient = User::find($r->userID);
+            $app->patientName = $patient->firstName . ' ' . $patient->firstName . ' ' . $patient->firstName;
+        } else {
+            $app->patientName = $r->appointmentFor;
+        }
+        
         $app->save();
         return redirect('/');
     }

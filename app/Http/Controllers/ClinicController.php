@@ -60,7 +60,7 @@ class ClinicController extends Controller
             }
 
             $labTests = [ 
-                'Complete Bloood Count w/ Platelet',
+                'Complete Blood Count w/ Platelet',
                 'Blood Typing',
                 'Urinalysis',
                 'Fecalysis',
@@ -107,7 +107,9 @@ class ClinicController extends Controller
         $clinic->mapLongtitude = $r->mapLongtitude;
         $clinic->contactNumber = $r->contactNumber;
         $clinic->emailAddress = $r->emailAddress;
-        $clinic->passWord = md5($r->passWord);
+        if($r->passWord != NULL) {
+            $clinic->passWord = md5($r->passWord);
+        }
         $clinic->save();
         return redirect()->back();
     }

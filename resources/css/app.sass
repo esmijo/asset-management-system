@@ -1,22 +1,21 @@
 @import 'variables'
 @import 'login'
 @import 'admin'
+@import 'calendar'
 
 body
  background-color: #fff
 
 nav#main-nav-bar
+  background-color: #2b5f8a !important
+  height: 5vh
   div.container-fluid
-    div#navbarNavDropdown
-      ul.navbar-nav
-        display: flex !important
-        flex-direction: row !important
-        justify-content: space-around !important
-        a
-          color: red !important
+    display: flex
+    color: #fff
+    .navbar-brand strong, .navbar-brand
+      color: #fff !important
 
 // #liveSearchBtn
-//   background-color: red
 
 form.create-appointment-form
   border: $grey-1 solid 1px

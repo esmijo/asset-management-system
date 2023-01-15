@@ -82,7 +82,7 @@
                 <div class="form-group link-register">
                   <span>No account yet? <a href="/register">Register here.</a></span>
                 </div>
-                <button type="submit" class="btn btn-success">Login</button>
+                <button type="submit" class="btn btn-primary">Login</button>
               </div>
             </form>
 

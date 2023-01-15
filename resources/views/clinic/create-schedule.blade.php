@@ -28,7 +28,7 @@
       <input type="hidden" name="clinicID" value="">
       <div class="row">
         <div class="form-group">
-          <button class="btn btn-success w-100">Submit</button>
+          <button class="btn btn-primary w-100">Submit</button>
         </div>
       </div>
       </form>

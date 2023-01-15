@@ -20,7 +20,7 @@ form.login-form .login-message {
   margin-bottom: 10px;
 }
 form.login-form .register-success strong {
-  color: green;
+  color: blue;
 }
 
 .registration-container {
@@ -54,7 +54,8 @@ form.login-form .register-success strong {
 }
 
 .main-container {
-  background-color: #d9eff7;
+  padding-top: 5vh !important;
+  background-color: #cae1e7;
 }
 .main-container .list-table {
   padding-top: 20px !important;
@@ -65,19 +66,22 @@ form.login-form .register-success strong {
 .main-container #admin-side-nav {
   background-color: #a7c3fa !important;
   margin-top: 1vh;
-  height: 98vh;
+  height: 93vh;
   padding: 0 5px 0 5px;
 }
 .main-container #admin-side-nav .nav-icon {
   display: none;
 }
-.main-container .nav-link {
+.main-container #admin-side-nav .nav-link {
   font-weight: bold;
   margin: 5px;
 }
-.main-container .nav-link:hover {
-  background-color: #41a652;
-  color: #153510 !important;
+.main-container #admin-side-nav .nav-link:hover {
+  background-color: #266bd3;
+  color: #ffffff !important;
+}
+.main-container #admin-side-nav .logout-container {
+  display: none;
 }
 .main-container .dropdown-nav {
   cursor: pointer;
@@ -107,9 +111,7 @@ form.login-form .register-success strong {
 .main-container #clinicLabTestContainer,
 .main-container #clinicAppointmentsContainer,
 .main-container #clinicProfileContainer {
-  height: 92vh !important;
-  overflow-x: scroll;
-  height: 92vh !important;
+  height: 90vh !important;
   overflow-x: scroll;
 }
 .main-container #appointmentsAccordion h1, .main-container #appointmentsAccordion h2, .main-container #appointmentsAccordion h3,
@@ -159,8 +161,8 @@ form.login-form .register-success strong {
   text-align: center;
 }
 .main-container .accordion-button:focus {
-  background-color: #41a652;
-  color: #153510;
+  background-color: #266bd3;
+  color: #ffffff;
 }
 .main-container .accordion-button {
   background-color: #a7c3fa;
@@ -219,13 +221,16 @@ body {
   background-color: #fff;
 }
 
-nav#main-nav-bar div.container-fluid div#navbarNavDropdown ul.navbar-nav {
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: space-around !important;
+nav#main-nav-bar {
+  background-color: #2b5f8a !important;
+  height: 5vh;
 }
-nav#main-nav-bar div.container-fluid div#navbarNavDropdown ul.navbar-nav a {
-  color: red !important;
+nav#main-nav-bar div.container-fluid {
+  display: flex;
+  color: #fff;
+}
+nav#main-nav-bar div.container-fluid .navbar-brand strong, nav#main-nav-bar div.container-fluid .navbar-brand {
+  color: #fff !important;
 }
 
 form.create-appointment-form {

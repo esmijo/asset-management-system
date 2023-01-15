@@ -24,6 +24,7 @@ use App\Http\Controllers\UserController;
 
 //LOGGED-OUT PAGES
 Route::middleware('isLoggedOut')->group(function() {
+    Route::get('/landing-page', [PageController::class, 'landing_page']);
     Route::get('/login', [PageController::class, 'login']);
     Route::post('/login', [LoginController::class, 'login']);
     Route::get('/register', [PageController::class, 'register']);
@@ -57,6 +58,8 @@ Route::middleware('isLoggedIn')->group(function() {
     Route::get('/axios_live_search', [AxiosController::class, 'axios_live_search']);
     Route::get('/axios_live_search_tests', [AxiosController::class, 'axios_live_search_tests']);
     Route::get('/axios_match_password', [AxiosController::class, 'axios_match_password']);
+    Route::get('/axios_get_patient_appointments', [AxiosController::class, 'axios_get_patient_appointments']);
+    Route::get('/axios_get_clinic_appointments', [AxiosController::class, 'axios_get_clinic_appointments']);
 
     //CLINIC PAGES
     Route::middleware('isClinic')->group(function() {
@@ -76,6 +79,8 @@ Route::middleware('isLoggedIn')->group(function() {
         Route::get('/verify-email/clinic/{email}', [PageController::class, 'verify_clinic']);
         Route::post('/verify-email/clinic/{email}', [ClinicController::class, 'verify_clinic']);
         Route::post('/clinic-profile', [ClinicController::class, 'clinic_photo']);
+        Route::get('/clinic-reports', [PageController::class, 'clinic_reports']);
+        Route::get('/generate_clinic_report', [ReportController::class, 'generate_clinic_report']);
     });
 
     //ADMIN PAGES

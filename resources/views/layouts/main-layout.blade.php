@@ -7,48 +7,35 @@
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="/css/fontawesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css" integrity="sha512-giQeaPns4lQTBMRpOOHsYnGw1tGVzbAIHUyHRgn7+6FmiEgGGjaG0T2LZJmAPMzRCl+Cug0ItQ2xDZpTmEc+CQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/media.css">
+  <link rel="stylesheet" href="/css/calendar.css">
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.3/index.global.min.js"></script>
   <script src="/js/axios.min.js"></script>
   <script type="text/javascript" src="/js/jspdf.min.js"></script>
   <script type="text/javascript" src="/js/html2canvas.js"></script>
   <script type="text/javascript" src="/js/chart.min.js"></script>
   <script type="text/javascript" src="/js/reports.js"></script>
+  <script src="/js/custom-calendar.js"></script>
   {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script> --}}
   <script type="text/javascript" src="/js/scripts.js"></script>
   <title>@yield('title')</title>
 </head>
 <body>
-  {{-- <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" id="main-nav-bar">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light" id="main-nav-bar">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item logout-link">
-            <a class="nav-link" href="/logout">Logout</a>
-          </li>
-        </ul>
-      </div>
+      <a class="navbar-brand">Welcome, <strong>{{ session('fullName') }}</strong></a>
+      <a class="nav-link" href="/logout">Logout</a>
     </div>
-  </nav> --}}
+  </nav>
+
   <main>
     <div id="app">
-      <div class="container main-container">
+      <div class="container-fluid main-container">
         <div class="col-md-0"></div>
         <div class="col-md-12">
           <div class="row">

@@ -9,7 +9,7 @@
   <h1>Clinic Schedules</h1>
   <hr>
   <div class="row">
-    <a href="/create-schedule" class="btn btn-success add-new-btn">Add New Time Schedule</a>
+    <a href="/create-schedule" class="btn btn-primary add-new-btn">Add New Time Schedule</a>
   </div>
   <hr>
 <table class="table table-sm table-hover">

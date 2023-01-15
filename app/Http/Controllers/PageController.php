@@ -103,7 +103,8 @@ class PageController extends Controller
 
     public function view_clinic_appointments() {
         $appointments = Appointment::where('clinicID', session('userID'))->orderByDesc('created_at')->get();
-        return view('clinic.clinic-appointments', compact('appointments'));
+        $clinic = Clinic::find(session('userID'))->first();
+        return view('clinic.clinic-appointments', compact('appointments', 'clinic'));
     }
 
     public function view_clinic_lab_tests() {
@@ -127,6 +128,16 @@ class PageController extends Controller
     public function verify_clinic($email) {
         $clinic = Clinic::where('emailAddress', $email)->first();
         return view('clinic.verify-email', compact('clinic'));
+    }
+
+    public function clinic_reports() {
+        $tests = LabTest::where('clinicID', session('userID'))->get();
+        $clinic = Clinic::find(session('userID'));
+        return view('clinic.reports', compact('tests', 'clinic'));
+    }
+
+    public function landing_page() {
+        return view('landing-page');
     }
     //End of Clinic Pages
 }

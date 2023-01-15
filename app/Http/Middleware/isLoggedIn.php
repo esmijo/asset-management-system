@@ -19,7 +19,7 @@ class isLoggedIn
         if (session()->has('userName')) {
             return $next($request);
         } else {
-            return redirect('/login');
+            return redirect('/landing-page');
         }
     }
 }

@@ -62,7 +62,7 @@ $(document).ready( function () {
 
   if(location.pathname.indexOf('/edit-appointment') == 0) {
     // $('#appointmentTime').prop('disabled', true)
-    $('#create-appointment-btn').prop('disabled', true)
+    // $('#create-appointment-btn').prop('disabled', true)
     let total = parseFloat(0.00)
     $('.form-check-input').on('change', function() {
       // console.log($(this).val())
@@ -190,7 +190,7 @@ $(document).ready( function () {
                   '<h3>Services Offered</h3>' +
                     '<table id="lab_tests_'+ val.id +'" class="table table-bordered"><tr><th>Test Name</th><th>Price</th></tr></table>' +
                   '</div>' +
-                  '<a href="/create-appointment/' + val.id + '" class="btn btn-success">Book an Appointment</a>' +
+                  '<a href="/create-appointment/' + val.id + '" class="btn btn-primary">Book an Appointment</a>' +
                   '</div>' +
               '</div>' +
             '</div>' +
@@ -252,7 +252,6 @@ $(document).ready( function () {
           pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
       }
       pdf.save(filename);
-      $(".print-details").hide();
     });
   }
   //END JSPDF

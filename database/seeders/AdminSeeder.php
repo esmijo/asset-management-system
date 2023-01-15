@@ -26,6 +26,7 @@ class AdminSeeder extends Seeder
         $user->emailAddress = 'app_admin@gmail.com';
         $user->contactNumber = '09101234567';
         $user->userType = 'Admin';
+        $user->verified = 'Verified';
         $user->save();
     }
 }

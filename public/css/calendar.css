@@ -1,0 +1,25 @@
+.fc-scrollgrid-sync-table {
+  background-color: #f5f5f5 !important;
+}
+
+.fc-col-header-cell {
+  background-color: #f5f5f5;
+}
+
+.fc-daygrid-day-events {
+  height: 0.2em !important;
+}
+
+.fc-day-today {
+    color: red !important;
+    background-color: #b9d6d8 !important;
+    font-weight: bold;
+}
+
+.fc-toolbar-title {
+  font-size: 1.1em !important;
+}
+
+.fc-header-toolbar {
+  margin-bottom: 0.5em !important;
+}

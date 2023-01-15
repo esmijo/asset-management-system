@@ -4,7 +4,7 @@
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
           <a href="javascript:void(0);" class="nav-link link-dark nav-icon">
-            <i class="fa-solid fa-bars"></i>
+            <strong class="">Menu</strong>
           </a>
         </li>
         @if(session('userType') == 'Admin')
@@ -30,6 +30,9 @@
           <li class="nav-item">
             <a href="/clinic-time-schedules" class="nav-link link-dark">Manage Time Schedules</a>
           </li>
+          <li class="nav-item">
+            <a href="/clinic-reports" class="nav-link link-dark">Manage Reports</a>
+          </li>
         @else
         <li class="nav-item">
           <a href="/clinics-and-services" class="nav-link link-dark">Clinics and Services</a>
@@ -44,8 +47,8 @@
             <a href="/my-profile" class="nav-link link-dark">My Profile</a>
           </li>
         @endif
-        <li class="nav-item">
-          <a href="/logout" class="nav-link link-dark">Logout</a>
+        <li class="nav-item logout-container">
+          <a href="/logout" class="nav-link link-dark logout-btn">Logout</a>
         </li>
       </ul>
     </div>

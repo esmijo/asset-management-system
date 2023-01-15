@@ -10,6 +10,7 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/axios.min.js"></script>
   <script src="js/scripts.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
   <title>Welcome!</title>
 </head>
 <body>
@@ -72,7 +73,7 @@
                         </div>
                         <div class="form-group">
                           <label for="birthday"><span class="req">*</span> Birthday</label>
-                          <input type="date" class="form-control" id="birthday" name="birthday" required>
+                          <input type="date" class="form-control" id="birthday" name="birthday" max="2004-01-01" required>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -94,7 +95,7 @@
                         </div>
                         <div class="form-group">
                           <label for=""></label>
-                          <input class="form-control btn btn-success" type="button" value="Register"  data-bs-toggle="modal" data-bs-target="#patientAgreement">
+                          <input class="form-control btn btn-primary" type="button" value="Register"  data-bs-toggle="modal" data-bs-target="#patientAgreement">
                         </div>
                       </div>
 
@@ -164,7 +165,7 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 100%;">Close</button>
-                              <input class="form-control btn btn-success" type="submit" value="Agree and Register">
+                              <input class="form-control btn btn-primary" type="submit" value="Agree and Register">
                             </div>
                           </div>
                         </div>
@@ -214,7 +215,7 @@
                         </div>
                         <div class="form-group">
                           <label for=""></label>
-                          <input class="form-control btn btn-success" type="button" value="Register"  data-bs-toggle="modal" data-bs-target="#clinicAgreement">
+                          <input class="form-control btn btn-primary" type="button" value="Register"  data-bs-toggle="modal" data-bs-target="#clinicAgreement">
                         </div>
                       </div>
 
@@ -284,7 +285,7 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width: 100%;">Close</button>
-                              <input class="form-control btn btn-success" type="submit" value="Agree and Register">
+                              <input class="form-control btn btn-primary" type="submit" value="Agree and Register">
                             </div>
                           </div>
                         </div>

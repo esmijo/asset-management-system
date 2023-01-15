@@ -9,7 +9,7 @@
     <h1>Clinic Laboratory Tests</h1>
     <hr>
     <div class="row">
-      <a href="/create-lab-test" class="btn btn-success add-new-btn">Add New Laboratory Test</a>
+      <a href="/create-lab-test" class="btn btn-primary add-new-btn">Add New Laboratory Test</a>
     </div>
     <hr>
     <table class="table table-sm table-hover">
