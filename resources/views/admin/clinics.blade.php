@@ -11,7 +11,8 @@ View Clinics
       <th>ID</th>
       <th>Client Name</th>
       <th>Sex</th>
-      <th>Birthday</th>
+      <th>Email</th>
+      <th>Clinic Status</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -19,10 +20,24 @@ View Clinics
     @foreach($clinics as $key => $clinic)
       <tr>
         <td>{{ $clinic->id }}</td>
-        <td>{{ $clinic->clinicName }}</td>
+        <td><a href="/update-clinic/{{ $clinic->id }}">{{ $clinic->clinicName }}</a></td>
         <td>{{ $clinic->completeAddress }}</td>
         <td>{{ $clinic->emailAddress }}</td>
-        <td><a href="/update-clinic/{{ $clinic->id }}">Update Info</a></td>
+        <td>
+        @if($clinic->verified == 'Verified')
+          Approved
+        @else
+          Rejected
+        @endif
+        </td>
+        <td>
+          <form action="/view-clinics" method="post">
+            {{ csrf_field() }}
+            <input type="hidden" name="clinicID" value="{{ $clinic->id }}">
+            <button class="btn btn-danger" type="submit" name="rejectBtn" value="Reject">Reject</button>
+            <button class="btn btn-primary" type="submit" name="approveBtn" value="Approve">Approve</button>
+          </form>
+        </td>
       </tr>
     @endforeach
   </tbody>

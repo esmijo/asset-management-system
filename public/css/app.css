@@ -110,7 +110,8 @@ form.login-form .register-success strong {
 .main-container #clinicScheduleContainer,
 .main-container #clinicLabTestContainer,
 .main-container #clinicAppointmentsContainer,
-.main-container #clinicProfileContainer {
+.main-container #clinicProfileContainer,
+.main-container #clinicRatingsContainer {
   height: 90vh !important;
   overflow-x: scroll;
 }
@@ -138,7 +139,10 @@ form.login-form .register-success strong {
 .main-container #clinicAppointmentsContainer h3,
 .main-container #clinicProfileContainer h1,
 .main-container #clinicProfileContainer h2,
-.main-container #clinicProfileContainer h3 {
+.main-container #clinicProfileContainer h3,
+.main-container #clinicRatingsContainer h1,
+.main-container #clinicRatingsContainer h2,
+.main-container #clinicRatingsContainer h3 {
   text-align: center;
 }
 .main-container #appointmentsAccordion .appointment-jumbotron,
@@ -149,7 +153,8 @@ form.login-form .register-success strong {
 .main-container #clinicScheduleContainer .appointment-jumbotron,
 .main-container #clinicLabTestContainer .appointment-jumbotron,
 .main-container #clinicAppointmentsContainer .appointment-jumbotron,
-.main-container #clinicProfileContainer .appointment-jumbotron {
+.main-container #clinicProfileContainer .appointment-jumbotron,
+.main-container #clinicRatingsContainer .appointment-jumbotron {
   margin-top: 20px;
   padding: 10px;
   margin-right: 10px;

@@ -87,13 +87,13 @@ class ClinicController extends Controller
                 $lt->save();
             }
 
-            $mail = Mail::to($r->emailAddress)
-            ->queue(new VerifyEmail(
-                $r->emailAddress,
-                $r->emailAddress,
-                $r->clinicName,
-                'clinic'
-            ));
+            // $mail = Mail::to($r->emailAddress)
+            // ->queue(new VerifyEmail(
+            //     $r->emailAddress,
+            //     $r->emailAddress,
+            //     $r->clinicName,
+            //     'clinic'
+            // ));
 
             return redirect('/login')->with('signup', 'Login failed. ');
         }
@@ -115,8 +115,12 @@ class ClinicController extends Controller
     }
 
     public function verify_clinic(Request $r) {
-        $clinic = Clinic::where('emailAddress', $r->emailAddress)->first();
-        $clinic->verified = 'Verified';
+        $clinic = Clinic::where('id', $r->clinicID)->first();
+        if($r->approveBtn) {
+            $clinic->verified = 'Verified';
+        } else {
+            $clinic->verified = 'Rejected';
+        }
         $clinic->save();
         return redirect()->back();
     }

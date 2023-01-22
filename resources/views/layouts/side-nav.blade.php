@@ -33,6 +33,9 @@
           <li class="nav-item">
             <a href="/clinic-reports" class="nav-link link-dark">Manage Reports</a>
           </li>
+          <li class="nav-item">
+            <a href="/ratings/{{ session('userID') }}" class="nav-link link-dark">Ratings and Reviews</a>
+          </li>
         @else
         <li class="nav-item">
           <a href="/clinics-and-services" class="nav-link link-dark">Clinics and Services</a>

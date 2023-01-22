@@ -11,16 +11,19 @@
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/media.css">
   <link rel="stylesheet" href="/css/calendar.css">
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/star-rating.css">
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.0.3/index.global.min.js"></script>
-  <script src="/js/axios.min.js"></script>
+  <script type="text/javascript" src="/js/axios.min.js"></script>
   <script type="text/javascript" src="/js/jspdf.min.js"></script>
   <script type="text/javascript" src="/js/html2canvas.js"></script>
   <script type="text/javascript" src="/js/chart.min.js"></script>
   <script type="text/javascript" src="/js/reports.js"></script>
-  <script src="/js/custom-calendar.js"></script>
+  <script type="text/javascript" src="/js/custom-calendar.js"></script>
+  <script type="text/javascript" src="/js/jquery.star-rating-svg.js"></script>
+  <script type="text/javascript" src="/js/custom-rating.js"></script>
   {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script> --}}
   <script type="text/javascript" src="/js/scripts.js"></script>
   <title>@yield('title')</title>

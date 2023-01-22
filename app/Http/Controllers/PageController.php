@@ -7,6 +7,7 @@ use App\Models\Appointment;
 use App\Models\Clinic;
 use App\Models\User;
 use App\Models\LabTest;
+use App\Models\Rating;
 use App\Models\Schedule;
 
 class PageController extends Controller
@@ -21,6 +22,12 @@ class PageController extends Controller
 
     public function register() {
         return view('register');
+    }
+
+    public function ratings($id) {
+        $clinic = Clinic::find($id);
+        $ratings = Rating::where('clinicID', $clinic->id)->orderBy('id', 'DESC')->get();
+        return view('ratings', compact('clinic', 'ratings'));
     }
 
     //Admin Pages

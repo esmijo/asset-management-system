@@ -1,0 +1,91 @@
+.jq-stars {
+  display: inline-block;
+}
+
+.jq-rating-label {
+  font-size: 22px;
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  font-family: helvetica, arial, verdana;
+}
+
+.jq-star {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.jq-star-svg {
+  padding-left: 3px;
+  width: 100%;
+  height: 100% ;
+}
+
+.jq-star:hover .fs-star-svg path {
+}
+
+.jq-star-svg path {
+  /* stroke: #000; */
+  stroke-linejoin: round;
+}
+
+/* un-used */
+.jq-shadow {
+  -webkit-filter: drop-shadow( -2px -2px 2px #888 );
+  filter: drop-shadow( -2px -2px 2px #888 );
+}
+
+.my-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.rating-divider {
+  margin: 10px;
+  border: 1px solid #5c5b5b;
+}
+
+div.clinicName strong {
+  display: flex !important;
+  flex-direction: row !important;
+  color: #02048d;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating-header {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.user-rating {
+  margin-right: 20px;
+  margin-top: -0.25rem;
+}
+
+.rating-card-body {
+  padding-bottom: 0;
+}
+
+.rating-card-divider {
+  margin: 5px;
+  border: 1px solid #5c5b5b;
+}
+
+.rating-card {
+  margin-top: 10px;
+}
+
+.rating-card:first-child {
+  margin-top: 0;
+}
+
+.rating-user-photo {
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 1px #8d8d8d solid;
+}

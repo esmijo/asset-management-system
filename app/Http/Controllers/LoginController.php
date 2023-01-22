@@ -25,15 +25,18 @@ class LoginController extends Controller
             }
         }
 
-
         $passWord = md5($r->passWord);
 
         if($user) {
             if($user->passWord == $passWord) {
                 
                 if($r->userType == 'Clinic') {
-                    session()->put('userName', $user->emailAddress);
-                    session()->put('fullName', $user->clinicName);
+                    if($r->verified == 'Verified') {
+                        session()->put('userName', $user->emailAddress);
+                        session()->put('fullName', $user->clinicName);
+                    } else {
+                        return redirect()->back()->with('notverified', 'Clinic is not verified by admin. ');
+                    }
                 } else {
                     session()->put('userName', $user->userName);
                     session()->put('fullName', $user->FullName);

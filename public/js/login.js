@@ -16,6 +16,10 @@ $(document).ready( function () {
     if ( $('#register-success').length ) {
       $('#register-modal').modal('show')
     }
+
+    if ( $('#clinic-not-verified').length ) {
+      $('#not-verified-modal').modal('show')
+    }
   }
 
   //AGE VERIFICATION ON REGISTER

@@ -33,6 +33,12 @@
                     <div class="login-error login-message" id="login-error">
                         <span>Incorrect <strong>username</strong> or <strong>password.</strong></span>
                     </div>
+                @endif
+
+                @if(session()->has('notverified'))
+                    <div class="clinic-not-verified login-message" id="clinic-not-verified">
+                        <span><strong>{{ session('notverified') }}</strong></span>
+                    </div>
                 @endif 
 
                 @if(session()->has('signup'))
@@ -51,6 +57,25 @@
                       </div>
                       <div class="modal-body">
                         Thank you for signup-up. Please close this pop-up to login.
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {{-- MODAL --}}
+
+                {{-- NOT VERIFIED MODAL --}}
+                <div class="modal fade" id="not-verified-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Login Error!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        {{ session('notverified') }}
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

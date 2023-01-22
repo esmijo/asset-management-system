@@ -143,6 +143,9 @@ $(document).ready( function () {
   }
 
   if(location.pathname == '/clinics-and-services') {
+
+    console.log($('.user-rating'))
+
     console.log('here')
     liveSearch() // load search results on page.ready
     $('#liveSearch').keyup(liveSearch)
@@ -156,6 +159,7 @@ $(document).ready( function () {
         let result = res.data
           $('#clinicAccordion').empty()
         $.each(result, function(index, val) {
+          console.log(val)
           let state = ''
           if(index == 0) {
             state = ''
@@ -178,6 +182,7 @@ $(document).ready( function () {
                       '<tr><th>Address</th><th> : </th><td>' + val.completeAddress + '</td></tr>' +
                       '<tr><th>Contact Number</th><th> : </th><td>' + val.contactNumber + '</td></tr>' +
                       '<tr><th>Email Address</th><th> : </th><td>' + val.emailAddress + '</td></tr>' +
+                      '<tr><th><a href="/ratings/' + val.id + '">User Rating</a></th><th> : </th><td><div class="user-rating" data-rating=' + val.AverageRating + '></div></td></tr>' +
                       '</table>' +
                     '</div>' +
                     '<div class="row">' +
@@ -196,32 +201,25 @@ $(document).ready( function () {
             '</div>' +
           '</div>')
 
-            console.log(this.tests)
           // })
             for(x = 0; x < this.tests.length; x++) {
               $('#lab_tests_' + val.id).append('<tr><td>' + this.tests[x].testName + '</td>1<td>' + this.tests[x].price + '</td></tr>')
             }
-            // var output = '';
-            // for (var property in val.tests) {
-            //   output += property + ': ' + object[property]+'; ';
-            //   console.log(output)
-            // }
-            // console.log(output)
-            // $('#lab_tests_' + val.id).append(output)
         }) //END OF EACH RES
+        
+        $('.user-rating').starRating({
+          totalStars: 5,
+          starShape: 'rounded',
+          starSize: 18,
+          emptyColor: 'gray',
+          hoverColor: '#43a6c9',
+          activeColor: '#2596be',
+          useGradient: false,
+          readOnly: true,
+          ratedColors: ['#2596be', '#2596be', '#2596be' ,'#2596be' ,'#2596be'],
+        });
       })
     }
-
-    // $('.create-appt-btn').click(function() {
-    //   let btn_id = $(this).data('id')
-    //   console.log(btn_id)
-    //   axios.get(`/axios_live_search_tests?clinicID=${btn_id}`).then(res => {
-    //     let tests = res.data
-    //     for(x = 0; x < tests.length; x++) {
-    //       $('#lab_tests_' + btn_id).append('<tr><td>Test Name</td>1<td>Price</td><td>ID</td></tr>')
-    //     }
-    //   })
-    // })
   }
   $('#downloadAppDetails').on('click', function() {
     var clinic = $(this).data('clinic')

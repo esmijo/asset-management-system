@@ -7,6 +7,7 @@ use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\LabTestController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\UserController;
@@ -35,6 +36,8 @@ Route::middleware('isLoggedOut')->group(function() {
 //LOGGED-IN PAGES
 Route::middleware('isLoggedIn')->group(function() {
     Route::get('/', [PageController::class, 'index']);
+    Route::get('/ratings/{id}', [PageController::class, 'ratings']);
+    Route::post('/ratings/{id}', [RatingController::class, 'submit_rating']);
 
     //CLIENT PAGES
     Route::middleware('isPatient')->group(function() {
@@ -76,8 +79,8 @@ Route::middleware('isLoggedIn')->group(function() {
         Route::post('/create-lab-test', [LabTestController::class, 'create']);
         Route::post('/update-lab-test/{id}', [LabTestController::class, 'update']);
         Route::post('/delete-lab-test/{id}', [LabTestController::class, 'delete']);
-        Route::get('/verify-email/clinic/{email}', [PageController::class, 'verify_clinic']);
-        Route::post('/verify-email/clinic/{email}', [ClinicController::class, 'verify_clinic']);
+        // Route::get('/verify-email/clinic/{email}', [PageController::class, 'verify_clinic']);
+        // Route::post('/verify-email/clinic/{email}', [ClinicController::class, 'verify_clinic']);
         Route::post('/clinic-profile', [ClinicController::class, 'clinic_photo']);
         Route::get('/clinic-reports', [PageController::class, 'clinic_reports']);
         Route::get('/generate_clinic_report', [ReportController::class, 'generate_clinic_report']);
@@ -91,6 +94,7 @@ Route::middleware('isLoggedIn')->group(function() {
         Route::get('/generate_report', [ReportController::class, 'generate_report']);
         Route::get('/view-patients', [PageController::class, 'view_patients']);
         Route::get('/update-patient/{id}', [PageController::class, 'update_patient']);
+        Route::post('/view-clinics', [ClinicController::class, 'verify_clinic']);
     });
 
     Route::post('/update-patient/{id}', [UserController::class, 'save_update']);

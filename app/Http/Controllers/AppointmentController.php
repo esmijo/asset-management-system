@@ -31,7 +31,7 @@ class AppointmentController extends Controller
         $app->totalAmount = $r->totalAmount;
         if($r->appointmentFor == NULL) {
             $patient = User::find($r->userID);
-            $app->patientName = $patient->firstName . ' ' . $patient->firstName . ' ' . $patient->firstName;
+            $app->patientName = $patient->firstName . ' ' . $patient->middleName . ' ' . $patient->lastName;
         } else {
             $app->patientName = $r->appointmentFor;
         }
@@ -79,7 +79,7 @@ class AppointmentController extends Controller
 
         if($r->appointmentFor == NULL) {
             $patient = User::find($r->userID);
-            $app->patientName = $patient->firstName . ' ' . $patient->firstName . ' ' . $patient->firstName;
+            $app->patientName = $patient->firstName . ' ' . $patient->middleName . ' ' . $patient->lastName;
         } else {
             $app->patientName = $r->appointmentFor;
         }
