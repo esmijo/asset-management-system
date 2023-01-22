@@ -24,10 +24,12 @@ View Clinics
         <td>{{ $clinic->completeAddress }}</td>
         <td>{{ $clinic->emailAddress }}</td>
         <td>
-        @if($clinic->verified == 'Verified')
+        @if($clinic->verified == 'Approved')
           Approved
-        @else
+        @elseif($clinic->verified == 'Rejected')
           Rejected
+        @else
+          Unverified
         @endif
         </td>
         <td>

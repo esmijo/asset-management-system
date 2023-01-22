@@ -5,26 +5,24 @@ if (location.pathname == '/admin-dashboard') {
     loadChart()
   })
 
-  // $('#btn-report').click(loadChart)
-
   $('#btn-report').on('click',function() {
-
     loadChart()
   })
 
   function loadChart(e) {
     //e.preventDefault()
-    let gender = $('#gender').val()
-    let chart = $('#chart').val()
+    let approvalStatus = $('#approvalStatus').find(':selected').val()
+    let chart = $('#chart').find(':selected').val()
 
     axios.get('/generate_report', {
         params: {
-            gender: gender,
+            approvalStatus: approvalStatus,
             chart: chart
         }
     }).then(res => {
         data = res.data
-        chartSetup(res.data)
+        console.log(data)
+        chartSetup(data)
     })
   }
 
@@ -44,29 +42,39 @@ if (location.pathname == '/admin-dashboard') {
     let bgColor = new Array()
     let chart = $('#chart').val()
 
-    $.each(data[0], function(index, test) {
-        xValues.push(test.testName)
-        let qty = 0;
-        $.each(data[1], function(index, appointment) {
-          let strCount = appointment.servicesAvailed.toString()
-          if (strCount.indexOf(test.testName) >= 0) {
-            qty = qty + 1
-          }
-        })
-        yValues.push(qty)
+    let cStatus = ['Approved', 'Rejected', 'Unverified']
 
-        let tempFill = getRandomColor().replace(')', ', 0.75').replace('rgb', 'rgba')
-        let tempBG = tempFill.replace('0.75)', ')').replace('rgba', 'rgb')
-        fillColor.push(tempFill)
-        bgColor.push(tempBG)
+    xValues = cStatus
+
+    let rejected = 0
+    let approved = 0
+    let unverified = 0
+
+    $.each(data, function(index, val) {
+      if(val.verified == 'Approved') {
+        approved++
+      } else if(val.verified == 'Rejected') {
+        rejected++
+      } else {
+        unverified++
+      }
+
+      let tempFill = getRandomColor().replace(')', ', 0.75').replace('rgb', 'rgba')
+      let tempBG = tempFill.replace('0.75)', ')').replace('rgba', 'rgb')
+      fillColor.push(tempFill)
+      bgColor.push(tempBG)
     })
+
+    yValues.push(approved, rejected, unverified)
+
+    console.log(yValues)
 
     repChart = new Chart(source, {
         type: chart,
         data: {
             labels: xValues,
             datasets: [{	
-                label: 'Number of Appointments',
+                label: 'Value',
                 data: yValues,
                 backgroundColor: fillColor,
                 borderColor: bgColor,

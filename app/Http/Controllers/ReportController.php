@@ -12,29 +12,16 @@ use DB;
 class ReportController extends Controller
 {
     public function generate_report(Request $r) {
-        $a = LabTest::select('testName')->distinct()->get();
-
-        if($r->gender == 'All') {
-            $b = Appointment::with('patient')->where('clinicID', $r->clinicID)->get();
+        if($r->approvalStatus == 'All') {
+            $data = Clinic::all();
         } else {
-            $b = Appointment::WhereHas('patient',function ( $query ) use($r) {
-                $query->where('sex', $r->gender);
-            })->get();
+            $data = Clinic::where('verified', $r->approvalStatus)->get();
         }
 
-        return response()->json([$a, $b]);
+        return response()->json($data);
     }
 
     public function generate_clinic_report(Request $r) {
-
-        // if($r->gender == 'All') {
-        //     $b = Appointment::with('patient')->where('clinicID', $r->clinicID)->get();
-        // } else {
-        //     $b = Appointment::WhereHas('patient',function ( $query ) use($r) {
-        //         $query->where('sex', $r->gender);
-        //     })->get();
-        // }
-
         if($r->testsAvailed == 'All') {
             $a = LabTest::where('clinicID', $r->clinicID)->select('testName')->get();
         } else {

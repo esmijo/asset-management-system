@@ -13,32 +13,24 @@ Admin Panel
         <div class="filter-container-left col-sm-6">
           <div class="form-group">
             <label for="firstName">Patient Gender</label>
-            <select class="form-control" id="gender" name="gender" value="">
+            <select class="form-control" id="approvalStatus" name="approvalStatus">
               <option value="All">All</option>
-              <option value="M">Male</option>
-              <option value="F">Female</option>
+              <option value="Approved">Approved</option>
+              <option value="Rejected">Rejected</option>
+              <option value="Unverified">Unverified</option>
             </select>
           </div>
           <br>
-          {{-- <div class="form-group">
-            <label for="firstName">Laboratory Test</label>
-            <select class="form-control" id="tests" name="tests" value="">
-                <option value="all">All</option>
-                @foreach($tests as $key => $test)
-                  <option value="{{ $test->id }}">{{ $test->testName }}</option>
-                @endforeach
-            </select>
-          </div> --}}
         </div>
 
         <div class="filter-container-right col-sm-6">
           <div class="form-group">
             <label for="firstName">Chart Type</label>
             <select class="form-control" id="chart" name="chart" value="">  
+              <option value="bar">Bar</option>
+              <option value="line">Line</option>
               <option value="doughnut">Doughnut</option>
               <option value="pie">Pie</option>
-              <option value="line">Line</option>
-              <option value="bar">Bar</option>
               <option value="bubble">Bubble</option>
               <option value="radar">Radar</option>
               <option value="polarArea">Polar Area</option>

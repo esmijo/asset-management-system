@@ -31,7 +31,7 @@ class LoginController extends Controller
             if($user->passWord == $passWord) {
                 
                 if($r->userType == 'Clinic') {
-                    if($r->verified == 'Verified') {
+                    if($user->verified == 'Approved') {
                         session()->put('userName', $user->emailAddress);
                         session()->put('fullName', $user->clinicName);
                     } else {

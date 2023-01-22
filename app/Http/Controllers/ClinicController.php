@@ -117,7 +117,7 @@ class ClinicController extends Controller
     public function verify_clinic(Request $r) {
         $clinic = Clinic::where('id', $r->clinicID)->first();
         if($r->approveBtn) {
-            $clinic->verified = 'Verified';
+            $clinic->verified = 'Approved';
         } else {
             $clinic->verified = 'Rejected';
         }
